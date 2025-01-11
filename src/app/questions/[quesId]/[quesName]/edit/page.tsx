@@ -2,17 +2,12 @@ import { db, questionCollection } from "@/models/name";
 import { databases } from "@/models/server/config";
 import React from "react";
 import EditQues from "./EditQues";
+import { NextPage } from "next";
 
-interface Params {
-  params: {
-    quesId: string;
-    quesName: string;
-  };
-}
-
-const Page = async ({ params }: Params) => {
+const Page: NextPage<{ params: { quesId: string; quesName: string } }> = async ({ params }) => {
+    const {quesId} = await params;
   try {
-    const question = await databases.getDocument(db, questionCollection, params.quesId);
+    const question = await databases.getDocument(db, questionCollection, quesId);
 
     // Check if the question exists
     if (!question) {
@@ -27,4 +22,5 @@ const Page = async ({ params }: Params) => {
 };
 
 export default Page;
+
 
