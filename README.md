@@ -5,6 +5,7 @@ This is  built with Next.js and Appwrite. It uses the [Appwrite Node.js SDK](htt
 
 Constributor:
 test commit
+commit 2
 
 ## Features
 
