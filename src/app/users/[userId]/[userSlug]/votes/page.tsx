@@ -11,8 +11,8 @@ const Page = async ({
     params,
     searchParams,
 }: {
-    params: { userId: string; userSlug: string };
-    searchParams: { page?: string; voteStatus?: "upvoted" | "downvoted" };
+    params: any;
+    searchParams: any;
 }) => {
     searchParams.page ||= "1";
 

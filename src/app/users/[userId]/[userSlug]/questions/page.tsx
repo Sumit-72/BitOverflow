@@ -10,8 +10,8 @@ const Page = async ({
     params,
     searchParams,
 }: {
-    params: { userId: string; userSlug: string };
-    searchParams: { page?: string };
+    params: any;
+    searchParams: any;
 }) => {
     searchParams.page ||= "1";
 

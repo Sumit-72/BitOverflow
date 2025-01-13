@@ -10,9 +10,9 @@ import Pagination from "@/components/Pagination";
 import Search from "./Search";
 
 const Page = async ({
-    searchParams,
+    searchParams
 }: {
-    searchParams: { page?: string; tag?: string; search?: string };
+    searchParams: any;
 }) => {
     const { tag,search } = await searchParams;
     let {page}=await searchParams;

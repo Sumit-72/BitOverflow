@@ -74,18 +74,18 @@ const demoTheme = createTheme({
 });
 
 // Define the custom logo component
-const CustomLogo = () => (
-  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-    <img src={BitOverflowLogo} alt="BitOverflow Logo" style={{ height: 40, borderRadius: '20%' }} />
-  </Box>
-);
+// const CustomLogo = () => (
+//   <Box sx={{ display: 'flex', alignItems: 'center' }}>
+//     <img src={BitOverflowLogo} alt="BitOverflow Logo" style={{ height: 40, borderRadius: '20%' }} />
+//   </Box>
+// );
 
 // Define branding options
-const customBranding = {
-  title: 'BitOverflow',
-  logo: <CustomLogo />,
-  homeUrl: '/',
-};
+// const customBranding = {
+//   title: 'BitOverflow',
+//   logo: <CustomLogo />,
+//   homeUrl: '/',
+// };
 
 // Define the DashboardLayoutBasic component
 const DashboardLayoutBasic = () => {
@@ -93,7 +93,7 @@ const DashboardLayoutBasic = () => {
 
   return (
     <AppProvider
-      branding={customBranding}
+      // branding={customBranding}
       navigation={NAVIGATION}
       router={router}
       theme={demoTheme}
