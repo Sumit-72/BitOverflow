@@ -1,10 +1,12 @@
+// layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import ClientComponent from "./c"; // Import the client component
 
 const inter = Inter({ subsets: ["latin"] });
-import { cn } from "@/lib/utils";
-import Header from "./components/Header";
+
 export const metadata: Metadata = {
   title: "BitOverflow",
   description: "Bit community",
@@ -18,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn(inter.className, "dark:bg-black dark:text-white")}>
-        {/* <Header /> */}
-        {children}
-        </body>
+        <ClientComponent>{children}</ClientComponent> {/* Use the client component */}
+      </body>
     </html>
   );
 }
+

@@ -1,12 +1,10 @@
 /* components/Sidebar.css */
 .sidebar {
     position: fixed; /* Position relative to allow absolute positioning of particles */
-    width: 15vw; /* Set width of sidebar */
-    height: 100vh; /* Full height of viewport */
-    /* background-color: rgba(228, 221, 221, 0.5); Optional: semi-transparent background for better visibility */
+    height: 100vh;
     padding: 15px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    border-left: 5px solid #ffffff; /* Add left border line */
+    display: flex;
+    flex-direction: column;
   }
   
   .particles-background {
