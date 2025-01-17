@@ -11,7 +11,7 @@ import FeedbackIcon from '@mui/icons-material/Feedback';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar rounded-lg bg-white/10 p-6 shadow-lg" >
+    <div className="sidebar " >
       <ul className="sidebar-items">
         <li className="sidebar-item"><SpaceDashboardIcon fontSize='medium'/>   Dashboard</li>
         <li className="sidebar-item"><QuestionIcon fontSize='medium'/>   My Queries</li>

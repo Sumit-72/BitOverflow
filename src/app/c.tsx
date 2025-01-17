@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'; // Import usePathname
 
 const ClientComponent = ({ children } : any) => {
   const pathname = usePathname(); // Get the current pathname
-  const isSpecificPage = pathname === '/specific-page'; // Replace with your specific page path
+  const isSpecificPage = pathname === '/'; // Replace with your specific page path
 
   return (
     <>
