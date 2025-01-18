@@ -1,12 +1,4 @@
 /* components/Sidebar.css */
-.sidebar {
-    position: fixed; /* Position relative to allow absolute positioning of particles */
-    height: 100vh;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-  }
-  
   .particles-background {
     position: absolute; /* Position absolute to fill the sidebar */
     top: 0;
