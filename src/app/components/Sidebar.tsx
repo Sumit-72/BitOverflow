@@ -31,7 +31,7 @@ const Sidebar = () => {
       </li>
       <li className="sidebar-item flex items-center gap-2">
         <NotificationsIcon fontSize="medium" />
-        <span className="hidden md:inline">Notifications</span>
+        <span className="hidden md:inline">Events</span>
       </li>
       <li className="sidebar-item flex items-center gap-2">
         <Diversity3Icon fontSize="medium" />

@@ -46,7 +46,7 @@ const HeroSectionHeader = () => {
     return (
         
         
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 z-0">
             <Particles
                 className="fixed inset-0 h-full w-full"
                 quantity={500}
