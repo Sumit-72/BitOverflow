@@ -48,16 +48,16 @@ const HeroSectionHeader = () => {
         
         <div className="container mx-auto px-4">
             <Particles
-                className="fixed inset-0 h-full w-full"
+                className="fixed inset-0 h-full w-full "
                 quantity={500}
                 ease={100}
                 color="#ffffff"
                 refresh
             />
-            <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2 sm:mt-30 ">
+            <div className="relative  grid grid-cols-1 gap-4 md:grid-cols-2 sm:mt-30 z-0">
                 <div className="flex items-center justify-center">
                     <div className="space-y-4 text-center ">
-                        <h1 className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
+                        <h1 className="pointer-events-none z-0 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
                             BitOverflow
                         </h1>
                         <p className="text-center text-xl font-bold leading-none tracking-tighter">
