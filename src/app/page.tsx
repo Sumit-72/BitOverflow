@@ -1,4 +1,5 @@
 // Home.js
+import Particles from "@/components/magicui/particles";
 import Footer from "./components/Footer";
 import HeroSectionHeader from "./components/HeroSectionHeader";
 import LatestQuestions from "./components/LatestQuestions";
@@ -18,7 +19,7 @@ export default function Home() {
 
         <div className="flex flex-1 pt-[4rem]">
           <div>
-            <aside className="fixed top-[4rem] left-0 h-[calc(100vh-4rem)] w-[16vw] bg-slate-400 shadow-lg">
+            <aside >
               <Sidebar />
             </aside>
           </div>
@@ -43,8 +44,6 @@ export default function Home() {
               <div className="m-10" />
               <Footer />
             </div>
-
-            
           </div>
         </div>
       </div>
