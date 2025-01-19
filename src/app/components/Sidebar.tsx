@@ -5,6 +5,7 @@ import QuestionIcon from '@mui/icons-material/Quiz';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
 import FeedbackIcon from '@mui/icons-material/Feedback';
+import ExploreIcon from '@mui/icons-material/Explore';
 import Link from 'next/link';
 
 const Sidebar = () => {
@@ -41,6 +42,12 @@ const Sidebar = () => {
           <Link href="/club" className="flex items-center gap-2">
             <Diversity3Icon fontSize="medium" />
             <span className="hidden md:inline">Clubs</span>
+          </Link>
+        </li>
+        <li className="sidebar-item flex items-center gap-2 pt-4">
+          <Link href="https://eloquent-semifreddo-c8e593.netlify.app" className="flex items-center gap-2">
+            <ExploreIcon fontSize="medium" />
+            <span className="hidden md:inline">Remaps</span>
           </Link>
         </li>
         <br />

@@ -1,5 +1,4 @@
 // Home.js
-import Particles from "@/components/magicui/particles";
 import Footer from "./components/Footer";
 import HeroSectionHeader from "./components/HeroSectionHeader";
 import LatestQuestions from "./components/LatestQuestions";
@@ -50,7 +49,7 @@ export default function Home() {
     </>
   );
 }
-export const products = [
+const products = [
   {
     title: "Moonbeam",
     link: "https://gomoonbeam.com",
@@ -70,10 +69,10 @@ export const products = [
   },
 
   {
-    title: "Editorially",
-    link: "https://editorially.org",
+    title: "Remap",
+    link: "https://eloquent-semifreddo-c8e593.netlify.app",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+      "/remap.jpg",
   },
   {
     title: "Events",
@@ -81,19 +80,7 @@ export const products = [
     thumbnail:
       "/Events.png",
   },
-  {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-  },
-
-  {
-    title: "AskAQuestion",
-    link: "https://algochurn.com",
-    thumbnail:
-      "/AskAQuestion.png",
-  },
+  
   {
     title: "Aceternity UI",
     link: "https://ui.aceternity.com",
@@ -101,46 +88,21 @@ export const products = [
       "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
   },
   {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
+    title: "AskAQuestion",
+    link: "https://algochurn.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+      "/AskAQuestion.png",
   },
   {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
+    title: "Questions",
+    link: "/questions",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+      "/question.png",
   },
   {
-    title: "Renderwork Studio",
-    link: "https://renderwork.studio",
+    title: "Remap",
+    link: "https://eloquent-semifreddo-c8e593.netlify.app",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  },
-
-  {
-    title: "Creme Digital",
-    link: "https://cremedigital.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  },
-  {
-    title: "Golden Bells Academy",
-    link: "https://goldenbellsacademy.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  },
-  {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  },
-  {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+      "/remap1.png",
   },
 ];

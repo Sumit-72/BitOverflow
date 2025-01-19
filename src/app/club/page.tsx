@@ -48,7 +48,7 @@ const page = () => {
 
 export default page;
 
-export const projects = [
+const projects = [
   {
     title: "ACM",
     description:
