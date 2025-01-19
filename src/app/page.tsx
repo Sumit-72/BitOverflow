@@ -4,9 +4,9 @@ import HeroSectionHeader from "./components/HeroSectionHeader";
 import LatestQuestions from "./components/LatestQuestions";
 import NavbarBoi from "./components/NavbarBoi";
 import Sidebar from "./components/Sidebar";
-import { WavyBackground } from "@/components/ui/wavy-background";
-import Grid from "./components/gridsec";
-
+import { HeroParallax } from "../components/ui/hero-parallax";
+import { SparklesCore } from "../components/ui/sparkles";
+ 
 export default function Home() {
   return (
     <>
@@ -23,15 +23,22 @@ export default function Home() {
             </aside>
           </div>
           {/* Main Content Area */}
-          <div className="ml-[16%] w-[84vw] overflow-y-auto overflow-x-hidden">
-            <div className="relative">
-              <WavyBackground>
-                <HeroSectionHeader />
-              </WavyBackground>
-            </div>
 
-            <div className="z-10">
-              <Grid />
+          <div className="ml-[16%] w-[84vw] overflow-y-auto">
+          <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={100}
+          className="w-full h-full fixed"
+          particleColor="#FFFFFF"
+        />
+            <div className="relative">
+             
+              
+              <HeroSectionHeader></HeroSectionHeader>
+              <HeroParallax products={products} />
               <LatestQuestions />
               <div className="m-10" />
               <Footer />
@@ -51,16 +58,16 @@ export const products = [
     thumbnail: "/Clubs.png",
   },
   {
-    title: "Cursor",
-    link: "https://cursor.so",
+    title: "Events",
+    link: "/events",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+      "/Events.png",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
+    title: "Clubs",
+    link: "/club",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+      "/Clubs.png",
   },
 
   {
@@ -70,10 +77,10 @@ export const products = [
       "https://aceternity.com/images/products/thumbnails/new/editorially.png",
   },
   {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
+    title: "Events",
+    link: "/events",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+      "/Events.png",
   },
   {
     title: "Pixel Perfect",
@@ -83,10 +90,10 @@ export const products = [
   },
 
   {
-    title: "Algochurn",
+    title: "AskAQuestion",
     link: "https://algochurn.com",
     thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+      "/AskAQuestion.png",
   },
   {
     title: "Aceternity UI",

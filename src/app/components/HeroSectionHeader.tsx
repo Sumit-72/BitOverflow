@@ -6,65 +6,27 @@ import ShimmerButton from "@/components/magicui/shimmer-button";
 import { useAuthStore } from "@/store/Auth";
 import Link from "next/link";
 import React from "react";
-
-const slugs = [
-    "typescript",
-    "javascript",
-    "dart",
-    "java",
-    "react",
-    "flutter",
-    "android",
-    "html5",
-    "css3",
-    "nodedotjs",
-    "express",
-    "nextdotjs",
-    "prisma",
-    "amazonaws",
-    "postgresql",
-    "firebase",
-    "nginx",
-    "vercel",
-    "testinglibrary",
-    "jest",
-    "cypress",
-    "docker",
-    "git",
-    "jira",
-    "github",
-    "gitlab",
-    "visualstudiocode",
-    "androidstudio",
-    "sonarqube",
-    "figma",
-];
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { Vortex } from "../../components/ui/vortex";
 
 const HeroSectionHeader = () => {
-    const { session } = useAuthStore();
+  const { session } = useAuthStore();
 
-    return (
-        
-        
-        <div className="container mx-auto px-4 z-0">
-            <Particles
-                className="fixed inset-0 h-full w-full "
-                quantity={500}
-                ease={100}
-                color="#ffffff"
-                refresh
-            />
-            <div className="relative  grid grid-cols-1 gap-4 md:grid-cols-2 sm:mt-30 z-0">
-                <div className="flex items-center justify-center">
-                    <div className="space-y-4 text-center ">
-                        <h1 className="pointer-events-none z-0 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
-                            BitOverflow
-                        </h1>
-                        <p className="text-center text-xl font-bold leading-none tracking-tighter">
-                            Ask questions, share knowledge, and collaborate with developers
-                            worldwide. Join our community and enhance your coding skills!
-                        </p>
-                        <div className="flex items-center justify-center gap-4">
+  return (
+    <div>
+      
+      <div className="w-[calc(100%-4rem)] mx-auto rounded-md  h-[30rem] overflow-hidden">
+      <Vortex
+        backgroundColor="black"
+        className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
+      >
+        <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
+          BitOverflow
+        </h2>
+        <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">
+        Unite, Share, Discover: Your Campus Community Awaits!
+        </p>
+        <div className="flex items-center justify-center gap-4">
                             {session ? (
                                 <Link href="/questions/ask">
                                     <ShimmerButton className="shadow-2xl">
@@ -92,16 +54,10 @@ const HeroSectionHeader = () => {
                                 </>
                             )}
                         </div>
-                    </div>
-                </div>
-                    <div className="flex items-center justify-center">
-                        <div className="relative max-w-[32rem] overflow-hidden">
-                            <IconCloud iconSlugs={slugs} />
-                        </div>
-                    </div>
-            </div>
-        </div>
-    );
+      </Vortex>
+    </div>
+    </div>
+  );
 };
 
 export default HeroSectionHeader;

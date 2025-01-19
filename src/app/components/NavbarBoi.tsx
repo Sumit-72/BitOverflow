@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { Button } from '@mui/material'
-const NavbarBoi = () => {
-  return (
-    <div className='sticky top-0 text-center left-0 right-0 bg-blue-400 p-5'>
-      Navbar bakchod hai
-      <Button color="secondary">Home</Button>
-      <Button color="secondary">Questions</Button>
-      <Button color="secondary">Profile</Button>
-      <Button color="secondary">Login/Signup</Button>
-    </div>
-=======
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
@@ -23,7 +10,6 @@ import Link from "next/link";
 export default function Header() {
     const { user } = useAuthStore();
     const { session, logout } = useAuthStore();
->>>>>>> 5d08d6da36d7afc3a96fad902466e79b6a76df55
 
     const navItems = [
         {
