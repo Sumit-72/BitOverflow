@@ -46,7 +46,7 @@ const LatestQuestions = async () => {
   );
   return (
     <>
-      <div className="flex space-x-6 m-10">
+      {/* <div className="flex space-x-6 m-10">
         <div className="space-y-6 w-[75vw] relative">
           {questions.documents.map((question) => (
             <QuestionCard key={question.$id} ques={question} />
@@ -55,7 +55,20 @@ const LatestQuestions = async () => {
         <div className="w-[20vw]">
           <TopContributers />
         </div>
+      </div> */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <div className="flex-grow space-y-6">        
+        <div className="space-y-4">
+        {questions.documents.map((question) => (
+            <QuestionCard key={question.$id} ques={question} />
+          ))}
+        </div>
       </div>
+
+      {/* <div className="lg:w-80 flex-shrink-0">
+        <TopContributers />
+      </div> */}
+    </div>
     </>
   );
 };

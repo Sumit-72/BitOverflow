@@ -1,22 +1,22 @@
-import React from 'react'
-import NavbarBoi from './NavbarBoi'
-import HeroSectionHeader from './HeroSectionHeader'
-import LatestQuestions from './LatestQuestions'
-import Footer from './Footer'
+// import React from 'react'
+// import NavbarBoi from './NavbarBoi'
+// import HeroSectionHeader from './sections/HeroSectionHeader'
+// import LatestQuestions from './LatestQuestions'
+// import Footer from './Footer'
 
-const mainc = () => {
-  return (
-    <>
-       <div className=''>
-          {/* <Header /> */}
-          <NavbarBoi />
-          <HeroSectionHeader />        
-          <LatestQuestions />
-          <div className='m-10' /> 
-          <Footer />
-        </div>
-    </>
-  )
-}
+// const mainc = () => {
+//   return (
+//     <>
+//        <div className=''>
+//           {/* <Header /> */}
+//           <NavbarBoi />
+//           <HeroSectionHeader />        
+//           <LatestQuestions />
+//           <div className='m-10' /> 
+//           <Footer />
+//         </div>
+//     </>
+//   )
+// }
 
-export default mainc
+// export default mainc
