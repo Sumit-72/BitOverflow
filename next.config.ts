@@ -1,19 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Add your other configuration options here
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
         pathname: '/**', // Allows all paths from Unsplash
-        search: '',
+      },
+      {
+        protocol: 'http',
+        hostname: 'cloud.appwrite.io',
+        pathname: '/**', // Allows all paths from Appwrite
       },
     ],
   },
 };
 
 export default nextConfig;
-
