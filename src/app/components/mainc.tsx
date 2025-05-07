@@ -1,8 +1,8 @@
 // import React from 'react'
 // import NavbarBoi from './NavbarBoi'
 // import HeroSectionHeader from './sections/HeroSectionHeader'
-// import LatestQuestions from './LatestQuestions'
-// import Footer from './Footer'
+// import LatestQuestions from './Questions';
+// import Footer from './layout/Footer'
 
 // const mainc = () => {
 //   return (

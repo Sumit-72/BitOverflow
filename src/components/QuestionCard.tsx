@@ -21,7 +21,7 @@ const QuestionCard = ({ ques }: { ques: Models.Document }) => {
     return (
         <div
             ref={ref}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 overflow-hidden rounded-xl border border-white/20 bg-white/5 p-4 duration-200 hover:bg-white/10"
+            className="relative flex flex-col gap-4 overflow-hidden rounded-xl border border-white/20 bg-white/5 p-4 duration-200 hover:bg-white/10 sm:flex-row"
         >
             <BorderBeam size={height} duration={12} delay={9} />
             <div className="relative shrink-0 text-sm sm:text-right">
