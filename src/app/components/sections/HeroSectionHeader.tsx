@@ -1,69 +1,8 @@
 "use client";
 
-// import IconCloud from "@/components/magicui/icon-cloud";
-// import Particles from "@/components/magicui/particles";
-// import ShimmerButton from "@/components/magicui/shimmer-button";
-// import { useAuthStore } from "@/store/Auth";
-// import Link from "next/link";
-// import React from "react";
-// import { WavyBackground } from "@/components/ui/wavy-background";
-// import { Vortex } from "../../components/ui/vortex";
-
-// const HeroSectionHeader = () => {
-//   const { session } = useAuthStore();
-
-//   return (
-//     <div>
-      
-//       <div className="w-[calc(100%-4rem)] mx-auto rounded-md  h-[30rem] overflow-hidden">
-//       <Vortex
-//         backgroundColor="black"
-//         className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
-//       >
-//         <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
-//           BitOverflow
-//         </h2>
-//         <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">
-//         Unite, Share, Discover: Your Campus Community Awaits!
-//         </p>
-//         <div className="flex items-center justify-center gap-4">
-//                             {session ? (
-//                                 <Link href="/questions/ask">
-//                                     <ShimmerButton className="shadow-2xl">
-//                                         <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-//                                             Ask a question
-//                                         </span>
-//                                     </ShimmerButton>
-//                                 </Link>
-//                             ) : (
-//                                 <>
-//                                     <Link href="/register">
-//                                         <ShimmerButton className="shadow-2xl">
-//                                             <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-//                                                 Sign up
-//                                             </span>
-//                                         </ShimmerButton>
-//                                     </Link>
-//                                     <Link
-//                                         href="/login"
-//                                         className="relative rounded-full border border-neutral-200 px-8 py-3 font-medium text-black dark:border-white/[0.2] dark:text-white"
-//                                     >
-//                                         <span>Login</span>
-//                                         <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
-//                                     </Link>
-//                                 </>
-//                             )}
-//                         </div>
-//       </Vortex>
-//     </div>
-//     </div>
-//   );
-// };
-
-// export default HeroSectionHeader;
-
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import Image from "next/image";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -103,33 +42,37 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 text-center pt-24 pb-12 md:py-0 hero-content transition-all duration-700 ease-out relative z-10">
         <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6 animate-fade-in">
-          Introducing Our New Platform
+            Your Campus Community Awaits!
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in animation-delay-100">
-          Design. Build. <br className="hidden md:block" />
+          Bitoverflow<br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Launch Faster.
+          Unite. Share. Discover.
           </span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 md:mb-12 animate-fade-in animation-delay-200">
-          Create stunning, high-performing digital experiences with our powerful platform designed for modern teams. Build faster and smarter than ever before.
+          Join the Buzz:
+          Events, Clubs, and Conversations at Your Fingertips!
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in animation-delay-300">
           <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center">
-            Get Started Free
+            Ask a Question
             <ArrowRight size={18} className="ml-2" />
           </button>
           <button className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-300">
-            Watch Demo
+            Watch Leaderboard
           </button>
         </div>
         
         <div className="mt-16 md:mt-24 max-w-5xl mx-auto relative animate-fade-in animation-delay-400">
           <div className="relative rounded-xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-            <img 
-              src="https://images.pexels.com/photos/8728560/pexels-photo-8728560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-              alt="Dashboard Preview" 
+            <Image
+              src="/ForumLogo.png"
+              alt="Dashboard Preview"
+              width={1260}
+              height={750}
               className="w-full h-auto"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent opacity-0 dark:opacity-30"></div>
           </div>

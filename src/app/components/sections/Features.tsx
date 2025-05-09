@@ -1,36 +1,36 @@
-import { Sparkles, Zap, Shield, Code, PieChart, Smartphone } from 'lucide-react';
+import { Sparkles, Zap, Shield, Code, PieChart, Smartphone, MapPin, HousePlus, ChartNoAxesCombined } from 'lucide-react';
 import FeatureCardClientWrapper from './FeatureCardClientWrapper'; // client wrapper
 
 const features = [
   {
     icon: 'Sparkles',
-    title: "AI-Powered Design",
-    description: "Harness the power of artificial intelligence to create stunning designs in seconds."
-  },
-  {
-    icon: 'Zap',
-    title: "Lightning Fast",
-    description: "Optimized for speed with near-instant loading times and smooth interactions."
-  },
-  {
-    icon: 'Shield',
-    title: "Enterprise Security",
-    description: "Bank-grade security with end-to-end encryption to keep your data safe."
+    title: "Personalised Dashboard",
+    description: "View your questions, clubs, upcoming events, and activity stats — all tailored to your interests and involvement."
   },
   {
     icon: 'Code',
-    title: "Developer Friendly",
-    description: "Well-documented APIs and SDKs that make integration a breeze."
+    title: "Questions",
+    description: "Post detailed questions with images or code snippets, get real-time peer responses, and build a culture of collaborative learning."
   },
   {
-    icon: 'PieChart',
-    title: "Advanced Analytics",
-    description: "Gain valuable insights with comprehensive analytics and reporting."
+    icon: 'HousePlus',
+    title: "Clubs",
+    description: "Explore a vibrant ecosystem of student clubs, follow updates, join discussions, and never miss an opportunity to get involved."
   },
   {
-    icon: 'Smartphone',
-    title: "Mobile Optimized",
-    description: "Fully responsive design ensures a perfect experience on any device."
+    icon: 'Zap',
+    title: "Events",
+    description: "From tech talks to cultural fests, discover, bookmark, and RSVP to events that shape your college experience."
+  },
+  {
+    icon: 'MapPin',
+    title: "Remap",
+    description: "Interactive map guides you through departments, clubs, venues, and more."
+  },
+  {
+    icon: 'ChartNoAxesCombined',
+    title: "Leaderboard",
+    description: "Get noticed and earn credibility by rising through the ranks as you ask thoughtful questions, share answers."
   }
 ];
 
@@ -41,19 +41,19 @@ export default function Features() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
           <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium mb-4">
-            Powerful Features
+            Make connections!
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            Everything you need to build amazing products
+          Explore, share, and thrive with your peers in one seamless community hub
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Our platform provides all the tools and features you need to create beautiful, high-performing digital experiences that your users will love.
+          Connecting every club, event, and question on campus. 
           </p>
         </div>
 
         <FeatureCardClientWrapper features={features} />
 
-        <div className="mt-20 md:mt-32 max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-blue-950 rounded-2xl p-8 md:p-12 shadow-xl">
+        {/* <div className="mt-20 md:mt-32 max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-blue-950 rounded-2xl p-8 md:p-12 shadow-xl">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
@@ -80,7 +80,7 @@ export default function Features() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

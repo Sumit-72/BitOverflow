@@ -48,13 +48,16 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <button className=" hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300">
+              Sign In
+            </button>
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300">
-              Get Started
+              Sign Up
             </button>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden space-x-4">
+          <div className="flex items-center md:hidden space-x-3">
             <button 
               onClick={toggleDarkMode}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -99,10 +102,7 @@ type NavLinksProps = {
 const NavLinks: React.FC<NavLinksProps> = ({ mobile = false, closeMenu }) => {
   const links = [
     { name: 'Home', href: '#' },
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#' },
-    { name: 'About', href: '#' },
-    { name: 'Contact', href: '#' },
+    { name: 'About Us', href: '#about' },
   ];
 
   return (

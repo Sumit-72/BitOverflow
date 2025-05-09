@@ -1,72 +1,8 @@
-// import React from 'react';
-// import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
-// import TagIcon from '@mui/icons-material/LocalOffer';
-// import QuestionIcon from '@mui/icons-material/Quiz';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-// import Diversity3Icon from '@mui/icons-material/Diversity3';
-// import FeedbackIcon from '@mui/icons-material/Feedback';
-// import ExploreIcon from '@mui/icons-material/Explore';
-// import Link from 'next/link';
-
-// const Sidebar = () => {
-//   return (
-//     <div
-//       className={"sidebar fixed top-[4rem] left-0 h-[calc(100vh-4rem)] bg-slate-400 shadow-lg transition-transform md:translate-x-0 md:w-[16%] sm:w-[8%]"}
-//     >
-//       <ul className="relative sidebar-items space-y-4 p-4 text-white">
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/" className="flex items-center gap-2">
-//             <SpaceDashboardIcon fontSize="medium" />
-//             <span className="hidden md:inline">Dashboard</span>
-//           </Link>
-//         </li>
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/questions" className="flex items-center gap-2">
-//             <QuestionIcon fontSize="medium" />
-//             <span className="hidden md:inline">My Queries</span>
-//           </Link>
-//         </li>
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/" className="flex items-center gap-2">
-//             <TagIcon fontSize="medium" />
-//             <span className="hidden md:inline">Tags</span>
-//           </Link>
-//         </li>
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/events" className="flex items-center gap-2">
-//             <NotificationsIcon fontSize="medium" />
-//             <span className="hidden md:inline">Events</span>
-//           </Link>
-//         </li>
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/club" className="flex items-center gap-2">
-//             <Diversity3Icon fontSize="medium" />
-//             <span className="hidden md:inline">Clubs</span>
-//           </Link>
-//         </li>
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="https://eloquent-semifreddo-c8e593.netlify.app" className="flex items-center gap-2">
-//             <ExploreIcon fontSize="medium" />
-//             <span className="hidden md:inline">Remaps</span>
-//           </Link>
-//         </li>
-//         <br />
-//         <li className="sidebar-item flex items-center gap-2 pt-4">
-//           <Link href="/feedback" className="flex items-center gap-2">
-//             <FeedbackIcon fontSize="medium" />
-//             <span className="hidden md:inline">Feedback</span>
-//           </Link>
-//         </li>
-//       </ul>
-//     </div>
-
-//   );
-// };
-
-// export default Sidebar;
 "use client";
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, Home, Layers, Users, Settings, HelpCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Layers, Users, Settings, HelpCircle, 
+        MessageCircleQuestion, Tag, Bell, Compass} from "lucide-react";
+import Link from "next/link";
 
 type SidebarProps = {
   isSidebarOpen: boolean;
@@ -77,11 +13,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const [activeItem, setActiveItem] = useState("home");
 
   const sidebarItems = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "features", label: "Features", icon: Layers },
-    { id: "team", label: "Our Team", icon: Users },
-    { id: "settings", label: "Settings", icon: Settings },
-    { id: "help", label: "Help", icon: HelpCircle },
+    { id: "home", label: "Home", icon: Home, href: "/" },
+    { id: "Questions", label: "Questions", icon: MessageCircleQuestion, href: "/questions" },
+    { id: "Tags", label: "Tags", icon: Tag, href: "/tags" },
+    { id: "Events", label: "Events", icon: Bell, href: "/events" },
+    { id: "Clubs", label: "Clubs", icon: Users, href: "/club" },
+    { id: "Campus Navigation", label: "Remap", icon: Compass, href: "https://eloquent-semifreddo-c8e593.netlify.app/" },
   ];
 
   return (
@@ -94,18 +31,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         <div className="px-4 py-6">
           <div className="flex flex-col space-y-4">
             {sidebarItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => setActiveItem(item.id)}
+                href={item.href}
                 className={`flex items-center p-3 rounded-lg transition-colors ${
                   activeItem === item.id
                     ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                     : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                 }`}
+                onClick={() => setActiveItem(item.id)}
               >
                 <item.icon size={20} />
                 <span className={`ml-3 ${!isSidebarOpen && "md:hidden"}`}>{item.label}</span>
-              </button>
+              </Link>
             ))}
           </div>
         </div>
