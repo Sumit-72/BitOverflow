@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Link } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import Logo from '../ui/Logo';
 import slugify from "@/utils/slugify";
 import { useAuthStore } from "@/store/Auth";
+import Link from 'next/link';
 
 
 type NavbarProps = {
@@ -64,33 +65,29 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             </button> */}
 
             <div>
-            {session ? (
-            <button
-              onClick={logout}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
-            >
-              Logout
-            </button>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200"
-              >
-                <span className="text-sm font-medium text-gray-700 dark:text-white">
-                  Login
-                </span>
-              </Link>
-              <Link
-                href="/register"
-                className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200"
-              >
-                <span className="text-sm font-medium text-gray-700 dark:text-white">
-                  Signup
-                </span>
-              </Link>
-            </>
-          )}
+              {session ? (
+                <button
+                  onClick={logout}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+                >
+                  Logout
+                </button>
+              ) : (
+                <div className="flex space-x-3">
+                  <Link
+                    href="/login"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+                  >
+                    Signup
+                  </Link>
+                </div>
+              )}
             </div>
 
 
@@ -108,35 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
-            <div>
-            {session ? (
-            <button
-              onClick={logout}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
-            >
-              Logout
-            </button>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200"
-              >
-                <span className="text-sm font-medium text-gray-700 dark:text-white">
-                  Login
-                </span>
-              </Link>
-              <Link
-                href="/register"
-                className="flex items-center space-x-2 px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-md shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200"
-              >
-                <span className="text-sm font-medium text-gray-700 dark:text-white">
-                  Signup
-                </span>
-              </Link>
-            </>
-          )}
-            </div>
+            
 
             <button 
               onClick={toggleMenu} 
@@ -158,9 +127,33 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           <div className="flex flex-col space-y-4">
             <NavLinks mobile={true} closeMenu={() => setIsOpen(false)} />
 
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300 w-full">
-              Get Started
+            <div>
+            {session ? (
+            <button
+              onClick={logout}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+            >
+              Logout
             </button>
+          ) : (
+            <>
+              <div className="flex space-x-3">
+                  <Link
+                    href="/login"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors duration-300"
+                  >
+                    Signup
+                  </Link>
+                </div>
+            </>
+          )}
+            </div>
 
 
           </div>
@@ -177,7 +170,6 @@ type NavLinksProps = {
 
 const NavLinks: React.FC<NavLinksProps> = ({ mobile = false, closeMenu }) => {
   const { user } = useAuthStore();
-  const { session, logout } = useAuthStore();
 
   const links = [
     { name: 'Home', href: '#' },    

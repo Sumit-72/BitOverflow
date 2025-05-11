@@ -106,6 +106,7 @@ export const useAuthStore = create<IAuthStore>()(
         try {
           await account.deleteSessions()
           set({session: null, jwt: null, user: null})
+          localStorage.removeItem("auth");
           
         } catch (error) {
           console.log(error)
