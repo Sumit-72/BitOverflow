@@ -171,8 +171,9 @@ const Page = async ({ params }: any) => {
                     </div>
                     <div className="w-full overflow-auto">
                         <MarkdownPreview className="rounded-xl p-4" source={question.content} />
-                        <picture>
+                        {/* <picture>
                             <img
+                                loading="lazy"
                                 src={
                                     storage.getFilePreview(
                                         questionAttachmentBucket,
@@ -182,7 +183,7 @@ const Page = async ({ params }: any) => {
                                 alt={question.title}
                                 className="mt-3 rounded-lg"
                             />
-                        </picture>
+                        </picture> */}
                         <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
                             {question.tags.map((tag: string) => (
                                 <Link

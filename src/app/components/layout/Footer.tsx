@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mail.sumitshekhar@gmail.com"
+                    href="mailto:mail.sumitshekhar@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
                     aria-label="Email Sumit"
                   >
@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mail.sumitshekhar@gmail.com"
+                    href="mailto:mail.sumitshekhar@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
                     aria-label="Email Sumit"
                   >
