@@ -1,4 +1,4 @@
-import { Trophy, Star} from "lucide-react";
+import { Trophy, Star } from "lucide-react";
 import { users } from "@/models/server/config";
 import { Models, Query } from "node-appwrite";
 import { UserPrefs } from "@/store/Auth";
