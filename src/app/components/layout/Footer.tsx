@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                 <span className="font-medium">Sumit Shekhar</span>
                 <div className="flex space-x-2">
                   <Link
-                    href="https://www.linkedin.com/in/johndoe"
+                    href="https://www.linkedin.com/in/sumit-shekhar72"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mailto:johndoe@example.com"
+                    href="mail.sumitshekhar@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
                     aria-label="Email Sumit"
                   >
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
                 <span className="font-medium">Pranav Prajyot</span>
                 <div className="flex space-x-2">
                   <Link
-                    href="https://www.linkedin.com/in/johndoe"
+                    href="https://www.linkedin.com/in/pranav-prajyot-b297232a4 "
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400">
               Or{" "}
               <Link
-                href="mailto:your-email@example.com"
+                href="bitoverflow2@gmail.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
                 send us an email
@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
                 <span className="font-medium">Sumit Shekhar</span>
                 <div className="flex space-x-2">
                   <Link
-                    href="https://www.linkedin.com/in/johndoe"
+                    href="https://www.linkedin.com/in/sumit-shekhar72"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
@@ -148,7 +148,7 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mailto:johndoe@example.com"
+                    href="mail.sumitshekhar@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
                     aria-label="Email Sumit"
                   >
@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
                 <span className="font-medium">Pranav Prajyot</span>
                 <div className="flex space-x-2">
                   <Link
-                    href="https://www.linkedin.com/in/johndoe"
+                    href="https://www.linkedin.com/in/pranav-prajyot-b297232a4 "
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
                 </div>
               </li>
             </ul>
-          </section>       
+          </section>        
         </div>
 
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
