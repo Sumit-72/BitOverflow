@@ -24,7 +24,6 @@ import { Query } from "node-appwrite";
 import React from "react";
 import DeleteQuestion from "./DeleteQuestion";
 import EditQuestion from "./EditQuestion";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 
 
 const Page = async ({ params }: any) => {
@@ -125,7 +124,7 @@ const Page = async ({ params }: any) => {
     ]);
 
     return (
-        <TracingBeam className="container pl-6">
+        <>
             <Particles
                 className="fixed inset-0 h-full w-full"
                 quantity={500}
@@ -226,7 +225,7 @@ const Page = async ({ params }: any) => {
                 </div>
                 <Answers answers={answers} questionId={question.$id} />
             </div>
-        </TracingBeam>
+            </>
     );
 };
 

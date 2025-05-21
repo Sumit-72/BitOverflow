@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
+
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -11,7 +11,6 @@ export const HoverEffect = ({
     title: string;
     description: string;
     link: string;
-    image: string;
   }[];
   className?: string;
 }) => {
@@ -25,7 +24,7 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link
+        <a
           href={item?.link}
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
@@ -49,23 +48,11 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          
           <Card>
-            <div className="flex items-center">
-              {" "}
-              {/* Flex container */}
-              <CardTitle className="mr-2">{item.title}</CardTitle>{" "}
-              {/* Add margin to separate title from image */}
-              <img
-                src={item.image}
-                alt="Club logo"
-                className="logo w-10 h-10 ml-10"
-              />{" "}
-              {/* Logo size */}
-            </div>
+            <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </Link>
+        </a>
       ))}
     </div>
   );
