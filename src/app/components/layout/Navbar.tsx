@@ -94,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden space-x-3">
+          <div className="flex items-center md:hidden ">
 
             {/* Mobile quick nav icons */}
             {[

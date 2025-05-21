@@ -12,7 +12,7 @@ const Logo: React.FC = () => {
           className="object-contain drop-shadow-xl rounded-[35%]"
         />
       </div>
-      <span className="text-2xl font-extrabold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent drop-shadow-md dark:drop-shadow-lg">
+      <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent drop-shadow-md dark:drop-shadow-lg">
         BitOverflow
       </span>
     </div>
