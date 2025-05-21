@@ -1,10 +1,11 @@
-import { Trophy, Star, Link } from "lucide-react";
+import { Trophy, Star } from "lucide-react";
 import { users } from "@/models/server/config";
 import { Models, Query } from "node-appwrite";
 import { UserPrefs } from "@/store/Auth";
 import convertDateToRelativeTime from "@/utils/relativeTime";
 import { avatars } from "@/models/client/config";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function TopContributors() {
   const topUsers = await users.list<UserPrefs>([Query.limit(5)]);
