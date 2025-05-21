@@ -7,6 +7,8 @@ export default function ClientSideEffects() {
   useEffect(() => {
     // Add animations stylesheet
     const style = document.createElement('style');
+
+    
     style.textContent = animations;
     document.head.appendChild(style);
 
@@ -20,3 +22,4 @@ export default function ClientSideEffects() {
 
   return null; // This component only runs side effects
 }
+

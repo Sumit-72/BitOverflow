@@ -11,6 +11,7 @@ import { databases, users } from "@/models/server/config";
 import { UserPrefs } from "@/store/Auth";
 import { Query } from "node-appwrite";
 import LatestQuestionCard from '../ui/LatestQuestionCard';
+import Link from 'next/link';
 
 const LatestQuestions: React.FC = async () => {
 
@@ -54,9 +55,12 @@ const LatestQuestions: React.FC = async () => {
           <div className="flex-grow space-y-6">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Latest Questions</h2>
-              <button className="text-blue-600 dark:text-blue-400 hover:underline flex items-center">
+              <Link
+                href="/questions"
+                className="flex items-center text-blue-600 hover:underline dark:text-blue-400"
+              >
                 View All <ArrowRight size={16} className="ml-1" />
-              </button>
+              </Link>
             </div>
             
             <div className="space-y-4">

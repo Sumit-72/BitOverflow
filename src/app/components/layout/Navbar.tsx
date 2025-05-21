@@ -4,7 +4,8 @@ import Logo from '../ui/Logo';
 import slugify from "@/utils/slugify";
 import { useAuthStore } from "@/store/Auth";
 import Link from 'next/link';
-
+import { IconHome, IconMessage, IconWorldQuestion } from "@tabler/icons-react";
+import { Home, Users, MessageCircleQuestion, Tag, Bell, Compass} from "lucide-react";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -28,6 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     setIsOpen(!isOpen);
   };
   const { session, logout } = useAuthStore();
+  const { user } = useAuthStore();
 
   return (
     <nav 
@@ -39,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <Logo />
           </div>
 
@@ -89,12 +91,27 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                 </div>
               )}
             </div>
-
-
           </div>
 
           {/* Mobile Navigation Toggle */}
           <div className="flex items-center md:hidden space-x-3">
+
+            {/* Mobile quick nav icons */}
+            {[
+              { href: '/', icon: <IconHome size={22} />, label: 'Home' },
+              { href: '/questions', icon: <IconWorldQuestion size={22} />, label: 'Questions' },
+              ...(user ? [{ href: `/users/${user.$id}/${slugify(user.name)}`, icon: <IconMessage size={22} />, label: 'Profile' }] : [])
+            ].map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="p-2 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                aria-label={link.label}
+                onClick={() => setIsOpen(false)}
+              >
+                {link.icon}
+              </Link>
+            ))}
 
             {/* Theme Change */}
             <button 
@@ -104,8 +121,6 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-
-            
 
             <button 
               onClick={toggleMenu} 
@@ -172,25 +187,56 @@ const NavLinks: React.FC<NavLinksProps> = ({ mobile = false, closeMenu }) => {
   const { user } = useAuthStore();
 
   const links = [
-    { name: 'Home', href: '#' },    
-    { name: 'Questions', href: '/questions' },
-    { name: 'About Us', href: '#about' },
-    ...(user ? [{ name: 'Profile', href: `/users/${user.$id}/${slugify(user.name)}` }] : [])
+    { name: 'Home', href: '#', icon: IconHome },    
+    { name: 'Questions', href: '/questions', icon: IconWorldQuestion },
+    ...(user ? [{ name: 'Profile', href: `/users/${user.$id}/${slugify(user.name)}` , icon: IconMessage}] : [])
   ];
 
+  const sidebarItems = [
+    { id: "Questions", label: "Questions", icon: MessageCircleQuestion, href: "/questions" },
+    { id: "Tags", label: "Tags", icon: Tag, href: "/" },
+    { id: "Events", label: "Events", icon: Bell, href: "/events" },
+    { id: "Clubs", label: "Clubs", icon: Users, href: "/club" },
+    { id: "Campus Navigation", label: "Remap", icon: Compass, href: "https://eloquent-semifreddo-c8e593.netlify.app/" },
+  ];
+
+  const [activeItem, setActiveItem] = useState("home");
+
+  if (mobile) {
+    // Show sidebar items as icons in mobile menu
+    return (
+      <div className="flex flex-col flex-wrap gap-2 justify-center">
+        {sidebarItems.map((item) => (
+          <Link
+                key={item.id}
+                href={item.href}
+                className={`flex items-center p-2 rounded-lg transition-colors ${
+                  activeItem === item.id
+                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+                onClick={() => setActiveItem(item.id)}
+              >
+                <item.icon size={20} />
+                <span className={`ml-3`}>{item.label}</span>
+              </Link>
+        ))}
+      </div>
+
+    );
+  }
+
+  // Desktop: show text links
   return (
     <>
       {links.map((link) => (
-        <a
+        <Link
           key={link.name}
           href={link.href}
-          onClick={mobile && closeMenu ? closeMenu : undefined}
-          className={`text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
-            mobile ? 'block py-2' : ''
-          }`}
+          className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
         >
           {link.name}
-        </a>
+        </Link>
       ))}
     </>
   );

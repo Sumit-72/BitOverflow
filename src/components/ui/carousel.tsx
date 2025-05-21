@@ -106,7 +106,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           )}
         </div>
 
-        <article
+        <Linkrticle
           className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
             current === index ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
@@ -119,7 +119,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
               {button}
             </button>
           </div>
-        </article>
+        <Linkrticle>
       </li>
     </div>
   );

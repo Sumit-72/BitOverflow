@@ -23,7 +23,6 @@ const QuestionCard = ({ ques }: { ques: Models.Document }) => {
             ref={ref}
             className="relative flex flex-col gap-4 overflow-hidden rounded-xl border border-white/20 bg-white/5 p-4 duration-200 hover:bg-white/10 sm:flex-row"
         >
-            <BorderBeam size={height} duration={12} delay={9} />
             <div className="relative shrink-0 text-sm sm:text-right">
                 <p>{ques.totalVotes} votes</p>
                 <p>{ques.totalAnswers} answers</p>
@@ -42,7 +41,7 @@ const QuestionCard = ({ ques }: { ques: Models.Document }) => {
                             href={`/questions?tag=${tag}`}
                             className="inline-block rounded-lg bg-white/10 px-2 py-0.5 duration-200 hover:bg-white/20"
                         >
-                            #{tag}
+                            {tag}
                         </Link>
                     ))}
                     <div className="ml-auto flex items-center gap-1">

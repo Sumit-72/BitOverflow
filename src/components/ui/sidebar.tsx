@@ -33,13 +33,13 @@ export function Sidebar() {
         <ul className="space-y-2 py-4">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a
+              <Link
                 href={item.href}
                 className="flex items-center px-4 py-2 hover:bg-gray-700"
               >
                 <item.icon size={24} className="mr-4" />
                 {!isCollapsed && <span>{item.label}</span>}
-              </a>
+              <Link>
             </li>
           ))}
         </ul>

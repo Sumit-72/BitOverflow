@@ -24,7 +24,7 @@ return (
     <div className="flex items-start justify-between">
       <div className="flex-grow">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400">
-          <a href={`/questions/${ques.$id}/${slugify(ques.title)}`}>{ques.title}</a>
+          <Link href={`/questions/${ques.$id}/${slugify(ques.title)}`}>{ques.title}</Link>
         </h3>
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
           {ques.content}

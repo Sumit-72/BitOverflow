@@ -1,142 +1,201 @@
-// import React from "react";
-// import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
-// import { cn } from "@/lib/utils";
-// import Link from "next/link";
-
-// const Footer = () => {
-//     const items = [
-//         {
-//             title: "Home",
-//             href: "/",
-//         },
-//         {
-//             title: "About",
-//             href: "/about",
-//         },
-//         {
-//             title: "Privacy Policy",
-//             href: "/privacy-policy",
-//         },
-//         {
-//             title: "Terms of Service",
-//             href: "/terms-of-service",
-//         },
-//         {
-//             title: "Questions",
-//             href: "/questions",
-//         },
-//     ];
-//     return (
-//         <footer className="relative block overflow-hidden border-t border-solid border-white/30 py-20">
-//             <div className="container mx-auto px-4">
-//                 <ul className="flex flex-wrap items-center justify-center gap-3">
-//                     {items.map(item => (
-//                         <li key={item.href}>
-//                             <Link href={item.href}>{item.title}</Link>
-//                         </li>
-//                     ))}
-//                 </ul>
-//                 <div className="mt-4 text-center">&copy; {new Date().getFullYear()} BitOverflow</div>
-//             </div>
-//             <AnimatedGridPattern
-//                 numSquares={30}
-//                 maxOpacity={0.4}
-//                 duration={3}
-//                 repeatDelay={1}
-//                 className={cn(
-//                     "[mask-image:radial-gradient(3000px_circle_at_center,white,transparent)]",
-//                     "inset-y-[-50%] h-[200%] skew-y-6"
-//                 )}
-//             />
-//         </footer>
-//     );
-// };
-
-// export default Footer;
-
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
+
 import Logo from '../ui/Logo';
+import Link  from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 py-12 md:py-16">
+    <footer className="bg-gray-100 dark:bg-gray-900 py-8 md:py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Logo />
             <p className="text-gray-600 dark:text-gray-400 mt-4">
-              Creating beautiful digital experiences with cutting-edge technology and intuitive design.
+              Connect with your peers, ask questions, and share knowledge.
             </p>
             <div className="flex space-x-4 mt-6">
-              <SocialIcon icon={Facebook} />
-              <SocialIcon icon={Twitter} />
-              <SocialIcon icon={Instagram} />
-              <SocialIcon icon={Linkedin} />
+              <SocialIcon icon={FaFacebookF} />
+              <SocialIcon icon={FaTwitter} />
+              <SocialIcon icon={FaInstagram} />
+              <SocialIcon icon={FaLinkedinIn} />
             </div>
+
+          <section className="hidden md:block mt-4 ">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white">
+              Meet Our Developers
+            </h3>
+            <ul>
+              <li className="flex items-center justify-between text-sm text-gray-800 dark:text-white mb-2 mt-2">
+                <span className="font-medium">Sumit Shekhar</span>
+                <div className="flex space-x-2">
+                  <Link
+                    href="https://www.linkedin.com/in/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
+                    aria-label="Sumit's LinkedIn"
+                  >
+                    <FaLinkedinIn className='size-5'/>
+                  </Link>
+                  <Link
+                    href="mailto:johndoe@example.com"
+                    className="text-blue-600 hover:underline dark:text-blue-400 "
+                    aria-label="Email Sumit"
+                  >
+                    <FaEnvelope className='size-5'/>
+                  </Link>
+                </div>
+              </li>
+              <li className="flex items-center justify-between text-sm text-gray-800 dark:text-white ">
+                <span className="font-medium">Pranav Prajyot</span>
+                <div className="flex space-x-2">
+                  <Link
+                    href="https://www.linkedin.com/in/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
+                    aria-label="Sumit's LinkedIn"
+                  >
+                    <FaLinkedinIn className='size-5'/>
+                  </Link>
+                  <Link
+                    href="mailto:johndoe@example.com"
+                    className="text-blue-600 hover:underline dark:text-blue-400 "
+                    aria-label="Email Sumit"
+                  >
+                    <FaEnvelope className='size-5'/>
+                  </Link>
+                </div>
+              </li>
+            </ul>
+          </section>            
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Company</h3>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Quick Links</h3>
             <ul className="space-y-3">
-              <FooterLink href="#about">About Us</FooterLink>
-              <FooterLink href="#careers">Careers</FooterLink>
-              <FooterLink href="#blog">Blog</FooterLink>
-              <FooterLink href="#press">Press</FooterLink>
+              <FooterLink href="/careers">Home</FooterLink>
+              <FooterLink href="/questions">Questions</FooterLink>
+              <FooterLink href="/leaderboard">LeaderBoard</FooterLink>
+              <FooterLink href="/questions/ask">Ask a Question</FooterLink>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Resources</h3>
             <ul className="space-y-3">
-              <FooterLink href="#docs">Documentation</FooterLink>
-              <FooterLink href="#guides">Guides</FooterLink>
-              <FooterLink href="#support">Support</FooterLink>
-              <FooterLink href="#api">API Status</FooterLink>
+              <FooterLink href="#https://eloquent-semifreddo-c8e593.netlify.app/">ReMap</FooterLink>
+              <FooterLink href="/club">Clubs</FooterLink>
+              <FooterLink href="/events">Events</FooterLink>
+              <FooterLink href="/">Tags</FooterLink>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Subscribe</h3>
+            <section>
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+              Report an Issue / Ask a Query
+            </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Subscribe to our newsletter for updates
+              Found a bug or have a question? Fill in your email below and we’ll get back to you.
             </p>
-            <form className="flex flex-col space-y-2">
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="px-4 py-2 rounded-l-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 w-full dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-r-lg transition-colors"
-                >
-                  <Mail size={20} />
-                </button>
-              </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                We respect your privacy. Unsubscribe at any time.
-              </p>
+            
+            <form className="flex mb-4" >
+              <input
+                type="email"
+                placeholder="Email address"
+                required
+                className="px-4 py-2 rounded-l-lg border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 dark:bg-gray-800 dark:border-gray-700 dark:text-white w-full"
+              />
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-r-lg transition-colors"
+                aria-label="Submit Email"
+              >
+                <FaEnvelope size={20} />
+              </button>
             </form>
-          </div>
+
+            <p className="text-gray-600 dark:text-gray-400">
+              Or{" "}
+              <Link
+                href="mailto:your-email@example.com"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                send us an email
+              </Link>
+              .
+            </p>
+          </section>
+        </div>
+
+        <section className="sm:hidden mt-4 ">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-white">
+              Meet Our Developers
+            </h3>
+            <ul>
+              <li className="flex items-center justify-between text-sm text-gray-800 dark:text-white mb-2 mt-2">
+                <span className="font-medium">Sumit Shekhar</span>
+                <div className="flex space-x-2">
+                  <Link
+                    href="https://www.linkedin.com/in/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
+                    aria-label="Sumit's LinkedIn"
+                  >
+                    <FaLinkedinIn className='size-5'/>
+                  </Link>
+                  <Link
+                    href="mailto:johndoe@example.com"
+                    className="text-blue-600 hover:underline dark:text-blue-400 "
+                    aria-label="Email Sumit"
+                  >
+                    <FaEnvelope className='size-5'/>
+                  </Link>
+                </div>
+              </li>
+              <li className="flex items-center justify-between text-sm text-gray-800 dark:text-white ">
+                <span className="font-medium">Pranav Prajyot</span>
+                <div className="flex space-x-2">
+                  <Link
+                    href="https://www.linkedin.com/in/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
+                    aria-label="Sumit's LinkedIn"
+                  >
+                    <FaLinkedinIn className='size-5'/>
+                  </Link>
+                  <Link
+                    href="mailto:johndoe@example.com"
+                    className="text-blue-600 hover:underline dark:text-blue-400 "
+                    aria-label="Email Sumit"
+                  >
+                    <FaEnvelope className='size-5'/>
+                  </Link>
+                </div>
+              </li>
+            </ul>
+          </section>       
         </div>
 
         <div className="border-t border-gray-200 dark:border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              © {new Date().getFullYear()} YourCompany. All rights reserved.
+              © {new Date().getFullYear()} BitOverflow. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#privacy" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+              <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
                 Privacy Policy
-              </a>
-              <a href="#terms" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+              </Link>
+              <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
                 Terms of Service
-              </a>
-              <a href="#cookies" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+              </Link>
+              <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -152,12 +211,12 @@ type FooterLinkProps = {
 
 const FooterLink: React.FC<FooterLinkProps> = ({ href, children }) => (
   <li>
-    <a 
+    <Link 
       href={href} 
       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
     >
       {children}
-    </a>
+    </Link>
   </li>
 );
 
@@ -166,12 +225,12 @@ type SocialIconProps = {
 };
 
 const SocialIcon: React.FC<SocialIconProps> = ({ icon: Icon }) => (
-  <a 
+  <Link 
     href="#" 
     className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white dark:hover:text-white transition-colors"
   >
     <Icon size={18} />
-  </a>
+  </Link>
 );
 
 export default Footer;

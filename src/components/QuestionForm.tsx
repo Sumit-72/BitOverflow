@@ -1,7 +1,6 @@
 "use client";
 
 import RTE from "@/components/RTE";
-import Meteors from "@/components/magicui/meteors";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/Auth";
@@ -29,7 +28,6 @@ const LabelInputContainer = ({
                 className
             )}
         >
-            <Meteors number={30} />
             {children}
         </div>
     );
@@ -159,6 +157,46 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
         setLoading(() => false);
     };
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const file = files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const maxWidth = 800; // Resize if needed
+            const scaleSize = maxWidth / img.width;
+            canvas.width = maxWidth;
+            canvas.height = img.height * scaleSize;
+
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob((blob) => {
+                if (blob) {
+                    const compressedFile = new File([blob], file.name, {
+                        type: file.type,
+                        lastModified: Date.now(),
+                    });
+
+                    setFormData((prev) => ({
+                        ...prev,
+                        attachment: compressedFile,
+                    }));
+                }
+            }, 'image/jpeg', 0.5); // quality: 0.7 (range: 0-1)
+        };
+        img.src = event.target?.result as string;
+    };
+
+    reader.readAsDataURL(file);
+};
+
+
     return (
         <form className="space-y-4 " onSubmit={submit} >
             {error && (
@@ -201,7 +239,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                 />
             </LabelInputContainer>
             <LabelInputContainer>
-                <Label htmlFor="image">
+                 <Label htmlFor="image">
                     Image
                     <br />
                     <small>
@@ -212,18 +250,12 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                     id="image"
                     name="image"
                     accept="image/*"
-                    placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+                    className="block w-full text-sm text-white bg-slate-600 file:mr-4 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 "
                     type="file"
-                    onChange={e => {
-                        const files = e.target.files;
-                        if (!files || files.length === 0) return;
-                        setFormData(prev => ({
-                            ...prev,
-                            attachment: files[0],
-                        }));
-                    }}
+                    onChange={handleImageChange}
                 />
             </LabelInputContainer>
+
             <LabelInputContainer>
                 <Label htmlFor="tag">
                     Tags

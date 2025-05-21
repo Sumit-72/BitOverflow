@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -55,11 +56,17 @@ const Hero: React.FC = () => {
           Events, Clubs, and Conversations at Your Fingertips!
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in animation-delay-300">
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center">
+          <button
+            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center"
+            onClick={() => window.location.href = "/questions/ask"}
+          >
             Ask a Question
             <ArrowRight size={18} className="ml-2" />
           </button>
-          <button className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-300">
+          <button
+            className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-300"
+            onClick={() => window.location.href = "/leaderboard"}
+          >
             Watch Leaderboard
           </button>
         </div>
@@ -81,7 +88,7 @@ const Hero: React.FC = () => {
       </div>
       
       <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-        <a 
+        <Link 
           href="#features" 
           className="animate-bounce p-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-all"
         >
@@ -99,7 +106,7 @@ const Hero: React.FC = () => {
           >
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );

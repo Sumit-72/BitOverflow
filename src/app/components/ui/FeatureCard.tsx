@@ -1,5 +1,6 @@
 import React from 'react';
 import { DivideIcon as LucideIcon } from 'lucide-react';
+import Link from 'next/link';
 
 type FeatureCardProps = {
   icon: typeof LucideIcon;
@@ -20,7 +21,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
         {description}
       </p>
       <div className="mt-6 flex items-center">
-        <a 
+        <Link 
           href="#" 
           className="text-blue-600 dark:text-blue-400 font-medium flex items-center hover:underline"
         >
@@ -39,7 +40,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
           >
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-        </a>
+        </Link>
       </div>
     </div>
   );

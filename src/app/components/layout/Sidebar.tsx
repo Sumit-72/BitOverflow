@@ -15,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const sidebarItems = [
     { id: "home", label: "Home", icon: Home, href: "/" },
     { id: "Questions", label: "Questions", icon: MessageCircleQuestion, href: "/questions" },
-    { id: "Tags", label: "Tags", icon: Tag, href: "/tags" },
+    { id: "Tags", label: "Tags", icon: Tag, href: "/" },
     { id: "Events", label: "Events", icon: Bell, href: "/events" },
     { id: "Clubs", label: "Clubs", icon: Users, href: "/club" },
     { id: "Campus Navigation", label: "Remap", icon: Compass, href: "https://eloquent-semifreddo-c8e593.netlify.app/" },

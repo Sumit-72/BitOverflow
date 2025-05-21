@@ -1,4 +1,4 @@
-import { Trophy, Star } from "lucide-react";
+import { Trophy, Star, Link } from "lucide-react";
 import { users } from "@/models/server/config";
 import { Models, Query } from "node-appwrite";
 import { UserPrefs } from "@/store/Auth";
@@ -52,9 +52,12 @@ export default async function TopContributors() {
         ))}
       </div>
 
-      <button className="w-full mt-6 py-2 text-center text-blue-600 dark:text-blue-400 hover:underline text-sm">
+      <Link
+        href="/leaderboard"
+        className="w-full mt-6 py-2 text-center text-blue-600 dark:text-blue-400 hover:underline text-sm block"
+      >  
         View All Contributors
-      </button>
+      </Link>
     </div>
   );
 }
