@@ -16,6 +16,8 @@
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
     "@uiw/react-md-editor": "^4.0.4",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "appwrite": "^15.0.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",

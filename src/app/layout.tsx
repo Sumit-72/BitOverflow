@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import ClientComponent from "./c"; // Import the client component
 import { Suspense } from "react";
 import PageLoader from "./components/PageLoader"; // Import the loader component
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +29,8 @@ export default function RootLayout({
           <PageLoader />
       </Suspense>
         <ClientComponent>{children}</ClientComponent> {/* Use the client component */}
+        <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   );
