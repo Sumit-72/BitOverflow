@@ -6,9 +6,10 @@ type FeatureCardProps = {
   icon: typeof LucideIcon;
   title: string;
   description: string;
+  link: string;
 };
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description, link }) => {
   return (
     <div className="p-6 md:p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-800 h-full flex flex-col group">
       <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg w-fit mb-6 group-hover:bg-blue-100 dark:group-hover:bg-blue-800/20 transition-colors">
@@ -22,7 +23,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, descriptio
       </p>
       <div className="mt-6 flex items-center">
         <Link 
-          href="#" 
+          href={link}
           className="text-blue-600 dark:text-blue-400 font-medium flex items-center hover:underline"
         >
           Learn More

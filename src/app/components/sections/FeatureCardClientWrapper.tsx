@@ -45,6 +45,7 @@ export default function FeatureCardClientWrapper({ features }: { features: any[]
               icon={Icon}
               title={feature.title}
               description={feature.description}
+              link={feature.link}
             />
           </div>
         );
