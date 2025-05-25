@@ -39,6 +39,17 @@ interface IAuthStore {
   loginWithOAuth(provider: string, successUrl?: string, failureUrl?: string): void;
 }
 
+// Utility function for email validation
+function isValidEmail(email: string): boolean {
+  // Simple regex for email validation
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// function isValidEmail(email: string): boolean {
+//   const emailRegex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)*bitmesra\.ac\.in$/;
+//   return emailRegex.test(email);
+// }
+
 
 export const useAuthStore = create<IAuthStore>()(
   persist(
@@ -68,6 +79,12 @@ export const useAuthStore = create<IAuthStore>()(
       },
 
       async login(email: string, password: string) {
+        if (!isValidEmail(email)) {
+          return {
+            success: false,
+            error: new AppwriteException("Invalid email format")
+          }
+        }
         try {
           const session = await account.createEmailPasswordSession(email, password)
           const [user, {jwt}] = await Promise.all([
@@ -94,7 +111,13 @@ export const useAuthStore = create<IAuthStore>()(
         }
       },
 
-      async createAccount(name:string, email: string, password: string) {
+      async createAccount(name: string, email: string, password: string) {
+        if (!isValidEmail(email)) {
+          return {
+            success: false,
+            error: new AppwriteException("Invalid email format")
+          }
+        }
         try {
           await account.create(ID.unique(), email, password, name)
           return {success: true}
@@ -131,8 +154,8 @@ export const useAuthStore = create<IAuthStore>()(
 
       loginWithOAuth(provider: any, successUrl?: string, failureUrl?: string) {
         // You can set default URLs or use window.location.origin
-        const success = successUrl || window.location.origin;
-        const failure = failureUrl || window.location.origin + "/login?error=oauth";
+        const success = successUrl || "http://localhost:3000/";
+        const failure = failureUrl || "http://localhost:3000/leaderboard";
         account.createOAuth2Session(provider, success, failure);
         // This will redirect the user to the OAuth provider
       },

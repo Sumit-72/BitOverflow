@@ -7,6 +7,10 @@ import { avatars } from "@/models/client/config";
 
 export default async function LeaderBoardPage() {
       const topUsers = await users.list<UserPrefs>();
+      // Sort users by reputation descending
+      const sortedUsers = [...topUsers.users].sort(
+        (a, b) => b.prefs.reputation - a.prefs.reputation
+      );
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12 px-4 flex flex-col items-center">
       <section className="w-full max-w-2xl">
@@ -28,7 +32,7 @@ export default async function LeaderBoardPage() {
       </div>
 
       <div className="space-y-4">
-        {topUsers.users.map((user, index) => (
+        {sortedUsers.map((user, index) => (
           <div
             key={user.$id}
             className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"

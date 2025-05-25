@@ -9,6 +9,10 @@ import Link from "next/link";
 
 export default async function TopContributors() {
   const topUsers = await users.list<UserPrefs>([Query.limit(5)]);
+  // Sort users by reputation descending
+  const sortedUsers = [...topUsers.users].sort(
+    (a, b) => b.prefs.reputation - a.prefs.reputation
+  );
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-100 dark:border-gray-800 p-6">
@@ -20,7 +24,7 @@ export default async function TopContributors() {
       </div>
 
       <div className="space-y-4">
-        {topUsers.users.map((user, index) => (
+        {sortedUsers.map((user, index) => (
           <div
             key={user.$id}
             className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
