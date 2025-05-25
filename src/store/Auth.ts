@@ -55,6 +55,11 @@ export const useAuthStore = create<IAuthStore>()(
       async verfiySession() {
         try {
           const session = await account.getSession("current")
+          if (session.provider) {
+          console.log("OAuth Provider:", session.provider);
+          console.log("Provider UID:", session.providerUid);
+          console.log("Provider Access Token:", session.providerAccessToken);
+        }
           set({session})
 
         } catch (error) {

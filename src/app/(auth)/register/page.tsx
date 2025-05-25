@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { useAuthStore } from "@/store/Auth";
 import Link from "next/link";
-import { redirect } from "next/dist/server/api-utils";
 
 const BottomGradient = () => {
     return (
