@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { persist } from "zustand/middleware";
 
-import {AppwriteException, ID, Models} from "appwrite"
+import {AppwriteException, ID, Models, OAuthProvider} from "appwrite"
 import { account } from "@/models/client/config";
 
 
@@ -36,6 +36,7 @@ interface IAuthStore {
     error?: AppwriteException| null
   }>
   logout(): Promise<void>
+  loginWithOAuth(provider: string, successUrl?: string, failureUrl?: string): void;
 }
 
 
@@ -104,13 +105,31 @@ export const useAuthStore = create<IAuthStore>()(
 
       async logout() {
         try {
-          await account.deleteSessions()
-          set({session: null, jwt: null, user: null})
+          // Optional: check if the user is logged in
+          await account.get(); // Throws if not logged in
+
+          // If no error above, user is logged in
+          await account.deleteSessions();
+        } catch (error: any) {
+          if (error.code === 401) {
+            // Already logged out or not logged in
+            console.warn("No active session to delete.");
+          } else {
+            console.error("Logout failed:", error);
+          }
+        } finally {
+          // Always clean up local state
+          set({ session: null, jwt: null, user: null });
           localStorage.removeItem("auth");
-          
-        } catch (error) {
-          console.log(error)
         }
+      },
+
+      loginWithOAuth(provider: any, successUrl?: string, failureUrl?: string) {
+        // You can set default URLs or use window.location.origin
+        const success = successUrl || window.location.origin;
+        const failure = failureUrl || window.location.origin + "/login?error=oauth";
+        account.createOAuth2Session(provider, success, failure);
+        // This will redirect the user to the OAuth provider
       },
     })),
     {
