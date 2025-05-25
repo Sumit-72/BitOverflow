@@ -56,13 +56,11 @@ const Hero: React.FC = () => {
           Events, Clubs, and Conversations at Your Fingertips!
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in animation-delay-300">
-          <button
+          <Link href="/questions/ask"
             className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center"
-            onClick={() => window.location.href = "/questions/ask"}
-          >
-            Ask a Question
-            <ArrowRight size={18} className="ml-2" />
-          </button>
+            >Ask a Question
+              <ArrowRight size={18} className="ml-2" />
+          </Link>
           <button
             className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-lg shadow hover:shadow-lg transition-all duration-300"
             onClick={() => window.location.href = "/leaderboard"}
