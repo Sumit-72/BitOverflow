@@ -39,7 +39,8 @@ const Footer: React.FC = () => {
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mailto:mail.sumitshekhar@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=mail.sumitshekhar@gmail.com"
+                    target='_blank'
                     className="text-blue-600 hover:underline dark:text-blue-400 "
                     aria-label="Email Sumit"
                   >
@@ -120,7 +121,8 @@ const Footer: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400">
               Or{" "}
               <Link
-                href="bitoverflow2@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=bitoverflow2@gmail.com"
+                target="_blank"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
                 send us an email
@@ -128,7 +130,7 @@ const Footer: React.FC = () => {
               .
             </p>
           </section>
-        </div>
+        </div>        
 
         <section className="sm:hidden mt-4 ">
             <h3 className="text-base font-semibold text-gray-900 dark:text-white">
