@@ -152,7 +152,7 @@ export const useAuthStore = create<IAuthStore>()(
           await account.createEmailPasswordSession(email, password);
 
           // ✅ Now user is authenticated and can request verification
-          await account.createVerification("http://localhost:3000/verify");
+          await account.createVerification(`${window.location.origin}/verify`);
 
           // Optional: log them out again until they verify
           await account.deleteSessions();
@@ -229,7 +229,7 @@ export const useAuthStore = create<IAuthStore>()(
               error: new AppwriteException("Invalid email format"),
             };
           }
-          const url = redirectUrl || "http://localhost:3000/recovery";
+          const url = redirectUrl || `${window.location.origin}/recovery`;
           await account.createRecovery(email, url);
           return { success: true };
         } catch (error) {
