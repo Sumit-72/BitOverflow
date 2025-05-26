@@ -37,6 +37,25 @@ interface IAuthStore {
   }>
   logout(): Promise<void>
   loginWithOAuth(provider: string, successUrl?: string, failureUrl?: string): void;
+  updateProfile(
+    params: {
+      name?: string;
+      email?: string;
+      oldPassword?: string;
+      newPassword?: string;
+    }
+  ): Promise<{
+    success: boolean;
+    error?: AppwriteException | null;
+  }>;
+  recoverPassword(
+    email: string,
+    redirectUrl?: string
+  ): Promise<{
+    success: boolean;
+    error?: AppwriteException | null;
+  }>;
+
 }
 
 // Utility function for email validation
@@ -90,18 +109,26 @@ export const useAuthStore = create<IAuthStore>()(
           const [user, {jwt}] = await Promise.all([
             account.get<UserPrefs>(),
             account.createJWT()
-
           ])
+
+          // Check if user is verified
+          if (!user.emailVerification) {
+            // Logout immediately if not verified
+            await account.deleteSession(session.$id);
+            return {
+              success: false,
+              error: new AppwriteException("Please verify your email before logging in.")
+            }
+          }
+
           if (!user.prefs?.reputation) await account.updatePrefs<UserPrefs>({
             reputation: 0
           })
 
           set({session, user, jwt})
-          
-          return { success: true}
+          return { success: true }
 
         } catch (error) {
-
           console.log(error)
           return {
             success: false,
@@ -116,18 +143,27 @@ export const useAuthStore = create<IAuthStore>()(
           return {
             success: false,
             error: new AppwriteException("Invalid email format")
-          }
+          };
         }
         try {
-          await account.create(ID.unique(), email, password, name)
-          return {success: true}
+          await account.create(ID.unique(), email, password, name);
+
+          // 🔐 Create a temporary session to promote user from 'guest' to 'user'
+          await account.createEmailPasswordSession(email, password);
+
+          // ✅ Now user is authenticated and can request verification
+          await account.createVerification("http://localhost:3000/verify");
+
+          // Optional: log them out again until they verify
+          await account.deleteSessions();
+
+          return { success: true };
         } catch (error) {
-          console.log(error)
+          console.log(error);
           return {
             success: false,
-            error: error instanceof AppwriteException ? error: null,
-            
-          }
+            error: error instanceof AppwriteException ? error : null,
+          };
         }
       },
 
@@ -159,6 +195,52 @@ export const useAuthStore = create<IAuthStore>()(
         account.createOAuth2Session(provider, success, failure);
         // This will redirect the user to the OAuth provider
       },
+
+      async updateProfile({ name, email, oldPassword, newPassword }) {
+        try {
+          if (name) {
+            await account.updateName(name);
+          }
+          // Email update is intentionally disabled
+          // if (email && oldPassword) {
+          //   await account.updateEmail(email, oldPassword);
+          // }
+          if (newPassword && oldPassword) {
+            await account.updatePassword(newPassword, oldPassword);
+          }
+          // Refresh user data after update
+          const user = await account.get<UserPrefs>();
+          set({ user });
+          return { success: true };
+        } catch (error) {
+          console.log(error);
+          return {
+            success: false,
+            error: error instanceof AppwriteException ? error : null,
+          };
+        }
+      },
+
+      async recoverPassword(email: string, redirectUrl?: string) {
+        try {
+          if (!isValidEmail(email)) {
+            return {
+              success: false,
+              error: new AppwriteException("Invalid email format"),
+            };
+          }
+          const url = redirectUrl || "http://localhost:3000/recovery";
+          await account.createRecovery(email, url);
+          return { success: true };
+        } catch (error) {
+          console.log(error);
+          return {
+            success: false,
+            error: error instanceof AppwriteException ? error : null,
+          };
+        }
+      },
+
     })),
     {
       name: "auth",
