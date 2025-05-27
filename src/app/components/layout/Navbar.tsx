@@ -197,7 +197,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ mobile = false, closeMenu }) => {
     { id: "Tags", label: "Tags", icon: Tag, href: "/" },
     { id: "Events", label: "Events", icon: Bell, href: "/events" },
     { id: "Clubs", label: "Clubs", icon: Users, href: "/club" },
-    { id: "Campus Navigation", label: "Remap", icon: Compass, href: "https://eloquent-semifreddo-c8e593.netlify.app/" },
+    { id: "Campus Navigation", label: "Remap", icon: Compass, href: "https://re-maps.vercel.app/" },
   ];
 
   const [activeItem, setActiveItem] = useState("home");

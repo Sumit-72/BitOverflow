@@ -31,7 +31,7 @@ const features = [
     icon: 'MapPin',
     title: "Remap",
     description: "Interactive map guides you through departments, clubs, venues, and more.",
-    link: "https://eloquent-semifreddo-c8e593.netlify.app/"
+    link: "https://re-maps.vercel.app/"
   },
   {
     icon: 'ChartNoAxesCombined',

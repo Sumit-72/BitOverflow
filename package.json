@@ -21,6 +21,7 @@
     "appwrite": "^15.0.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
+    "depcheck": "^1.4.7",
     "eslint-plugin-react": "^7.37.3",
     "framer-motion": "^11.18.1",
     "immer": "^10.1.1",

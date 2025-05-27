@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Resources</h3>
             <ul className="space-y-3">
-              <FooterLink href="#https://eloquent-semifreddo-c8e593.netlify.app/">ReMap</FooterLink>
+              <FooterLink href="#https://re-maps.vercel.app/">ReMap</FooterLink>
               <FooterLink href="/club">Clubs</FooterLink>
               <FooterLink href="/events">Events</FooterLink>
               <FooterLink href="/">Tags</FooterLink>
