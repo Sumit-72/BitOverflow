@@ -125,13 +125,13 @@ const Page = async ({ params }: any) => {
 
     return (
         <>
-            <Particles
+            {/* <Particles
                 className="fixed inset-0 h-full w-full"
                 quantity={500}
                 ease={100}
                 color="#ffffff"
                 refresh
-            />
+            /> */}
             <div className="relative mx-auto px-4 pb-20 pt-36">
                 <div className="flex">
                     <div className="w-full">
