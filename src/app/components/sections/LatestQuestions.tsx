@@ -13,6 +13,8 @@ import { Query } from "node-appwrite";
 import LatestQuestionCard from '../ui/LatestQuestionCard';
 import Link from 'next/link';
 
+export const dynamic = "force-dynamic";
+
 const LatestQuestions: React.FC = async () => {
 
   const { documents: docs } = await databases.listDocuments(db, questionCollection, [
