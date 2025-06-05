@@ -37,7 +37,7 @@ const projects = [
   {
     title: "ACM",
     description:
-      "We aim at being an active community in the field of computer science and related disciplines. Our vision at ACM is “Dream, Share and Innovate”.",
+      "The world’s largest technical professional organization dedicated to advancing technology. IEEE empowers students to innovate, learn, and connect through workshops, conferences, competitions, and cutting-edge projects.",
     link: "https://www.instagram.com/acmbitm/",
     image: "/ACMlogo.png",
   },
@@ -51,7 +51,7 @@ const projects = [
   {
     title: "PSoc",
     description:
-      "A multinational technology company that specializes in Internet-related services and products.",
+      "A creative community for photo enthusiasts to explore, learn, and capture moments. From workshops to photo walks and exhibitions, we bring stories to life through the lens.",
     link: "https://google.com",
     image: "/PSOClogo.png",
   },
@@ -65,35 +65,35 @@ const projects = [
   {
     title: "Ehsaas",
     description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "The official social welfare club, Ehsaas is driven by compassion and action. We work to create meaningful change through community outreach, awareness drives, and service initiatives that reflect the true spirit of empathy.",
     link: "https://amazon.com",
     image: "/ehsaaslogo.png",
   },
   {
     title: "Robolution",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+      "A robotics and automation club where innovation meets engineering. From building bots to competing in tech challenges, Robolution empowers students to design, code, and create the future of robotics.",
     link: "https://microsoft.com",
     image: "/robolutionlogo.png",
   },
   {
     title: "AeroSoc",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+      "A student-led club dedicated to the world of aviation and aerospace. From model aircraft to aerodynamics and space tech, AeroSoc fuels curiosity through hands-on projects, workshops, and competitions.",
     link: "https://microsoft.com",
     image: "Aerosoclogo.png",
   },
   {
     title: "180 DC",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+      "180DC is the world’s largest university-based consultancy, providing high-quality, socially conscious consulting services to nonprofits and social enterprises. It empowers students to create real impact by solving real-world challenges.",
     link: "https://microsoft.com",
     image: "/180DClogo.png",
   },
   {
     title: "Leo",
     description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+      "A youth wing of Lions Clubs International, Leo Club focuses on Leadership, Experience, and Opportunity. It empowers young people to serve the community, develop skills, and grow as future leaders through volunteer work and social initiatives.",
     link: "https://microsoft.com",
     image: "/LEOlogo.png",
   },
