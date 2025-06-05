@@ -1,3 +1,4 @@
+"use client";
 import { Sparkles, Zap, Shield, Code, PieChart, Smartphone, MapPin, HousePlus, ChartNoAxesCombined } from 'lucide-react';
 import FeatureCardClientWrapper from './FeatureCardClientWrapper'; // client wrapper
 import { useAuthStore } from "@/store/Auth";
@@ -11,7 +12,7 @@ export default function Features() {
       icon: 'Sparkles',
       title: "Personalised Dashboard",
       description: "View your questions, clubs, upcoming events, and activity stats — all tailored to your interests and involvement.",
-      href: user ? `/users/${user.$id}/${slugify(user.name)}` : "#",
+      link: user ? `/users/${user.$id}/${slugify(user.name)}` : "#",
       requireAuth: true
     },
     {
