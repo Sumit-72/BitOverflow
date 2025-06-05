@@ -5,6 +5,8 @@ import Hero from './components/sections/HeroSectionHeader';
 import Features from './components/sections/Features';
 import ClientSideEffects from './components/ClientSidesEffect';
 
+export const dynamic = "force-dynamic";
+
 function App() {
   return (
     <Layout>
