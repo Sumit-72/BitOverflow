@@ -7,6 +7,8 @@ import { avatars } from "@/models/client/config";
 import Image from "next/image";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function TopContributors() {
   const topUsers = await users.list<UserPrefs>([Query.limit(5)]);
   // Sort users by reputation descending

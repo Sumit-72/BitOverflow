@@ -5,6 +5,8 @@ import { UserPrefs } from "@/store/Auth";
 import convertDateToRelativeTime from "@/utils/relativeTime";
 import { avatars } from "@/models/client/config";
 
+export const dynamic = "force-dynamic";
+
 export default async function LeaderBoardPage() {
       const topUsers = await users.list<UserPrefs>();
       // Sort users by reputation descending
