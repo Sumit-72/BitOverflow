@@ -37,14 +37,14 @@ const projects = [
   {
     title: "ACM",
     description:
-      "The world’s largest technical professional organization dedicated to advancing technology. IEEE empowers students to innovate, learn, and connect through workshops, conferences, competitions, and cutting-edge projects.",
+      "A leading global organization for computing professionals and students. ACM fosters learning, innovation, and collaboration through workshops, coding contests, tech talks, and research opportunities.",
     link: "https://www.instagram.com/acmbitm/",
     image: "/ACMlogo.png",
   },
   {
     title: "IEEE",
     description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+      "The world’s largest technical professional organization dedicated to advancing technology. IEEE empowers students to innovate, learn, and connect through workshops, conferences, competitions, and cutting-edge projects.",
     link: "https://netflix.com",
     image: "/IEEElogo.png",
   },
