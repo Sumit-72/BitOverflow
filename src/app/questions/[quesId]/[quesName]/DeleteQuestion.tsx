@@ -5,6 +5,7 @@ import { db, questionCollection } from "@/models/name";
 import { useAuthStore } from "@/store/Auth";
 import { IconTrash } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
+import { Query } from "node-appwrite";
 import React from "react";
 
 const DeleteQuestion = ({ questionId, authorId }: { questionId: string; authorId: string }) => {
@@ -13,6 +14,38 @@ const DeleteQuestion = ({ questionId, authorId }: { questionId: string; authorId
 
     const deleteQuestion = async () => {
         try {
+            // Delete all answers related to the question
+            const answers = await databases.listDocuments(db, "answers", [
+                Query.equal("questionId", questionId),
+            ]);
+            await Promise.all(
+                answers.documents.map(ans =>
+                    databases.deleteDocument(db, "answers", ans.$id)
+                )
+            );
+
+            // Delete all comments related to the question
+            const comments = await databases.listDocuments(db, "comments", [
+                Query.equal("questionId", questionId),
+            ]);
+            await Promise.all(
+                comments.documents.map(comment =>
+                    databases.deleteDocument(db, "comments", comment.$id)
+                )
+            );
+
+            // Delete all votes related to the question
+            const votes = await databases.listDocuments(db, "votes", [
+                Query.equal("type", "question"),
+                Query.equal("typeId", questionId),
+            ]);
+            await Promise.all(
+                votes.documents.map(vote =>
+                    databases.deleteDocument(db, "votes", vote.$id)
+                )
+            );
+
+            // Delete the question itself
             await databases.deleteDocument(db, questionCollection, questionId);
 
             router.push("/questions");
