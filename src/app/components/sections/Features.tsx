@@ -1,48 +1,54 @@
 import { Sparkles, Zap, Shield, Code, PieChart, Smartphone, MapPin, HousePlus, ChartNoAxesCombined } from 'lucide-react';
 import FeatureCardClientWrapper from './FeatureCardClientWrapper'; // client wrapper
-import { link } from 'fs';
-
-const features = [
-  {
-    icon: 'Sparkles',
-    title: "Personalised Dashboard",
-    description: "View your questions, clubs, upcoming events, and activity stats — all tailored to your interests and involvement.",
-    link: "/"
-  },
-  {
-    icon: 'Code',
-    title: "Questions",
-    description: "Post detailed questions with images or code snippets, get real-time peer responses, and build a culture of collaborative learning.",
-    link: "/questions"
-  },
-  {
-    icon: 'HousePlus',
-    title: "Clubs",
-    description: "Explore a vibrant ecosystem of student clubs, follow updates, join discussions, and never miss an opportunity to get involved.",
-    link: "/club"
-  },
-  {
-    icon: 'Zap',
-    title: "Events",
-    description: "From tech talks to cultural fests, discover, bookmark, and RSVP to events that shape your college experience.",
-    link: "/events"
-  },
-  {
-    icon: 'MapPin',
-    title: "Remap",
-    description: "Interactive map guides you through departments, clubs, venues, and more.",
-    link: "https://re-maps.vercel.app/"
-  },
-  {
-    icon: 'ChartNoAxesCombined',
-    title: "Leaderboard",
-    description: "Get noticed and earn credibility by rising through the ranks as you ask thoughtful questions, share answers.",
-    link: "/leaderboard"
-  }
-];
+import { useAuthStore } from "@/store/Auth";
+import slugify from "@/utils/slugify"; // if you have a slugify util
 
 
 export default function Features() {
+  const { user } = useAuthStore();
+  const features = [
+    {
+      icon: 'Sparkles',
+      title: "Personalised Dashboard",
+      description: "View your questions, clubs, upcoming events, and activity stats — all tailored to your interests and involvement.",
+      href: user ? `/users/${user.$id}/${slugify(user.name)}` : "#",
+      requireAuth: true
+    },
+    {
+      icon: 'Code',
+      title: "Questions",
+      description: "Post detailed questions with images or code snippets, get real-time peer responses, and build a culture of collaborative learning.",
+      link: "/questions"
+    },
+    {
+      icon: 'HousePlus',
+      title: "Clubs",
+      description: "Explore a vibrant ecosystem of student clubs, follow updates, join discussions, and never miss an opportunity to get involved.",
+      link: "/club"
+    },
+    {
+      icon: 'Zap',
+      title: "Events",
+      description: "From tech talks to cultural fests, discover, bookmark, and RSVP to events that shape your college experience.",
+      link: "/events"
+    },
+    {
+      icon: 'MapPin',
+      title: "Remap",
+      description: "Interactive map guides you through departments, clubs, venues, and more.",
+      link: "https://re-maps.vercel.app/"
+    },
+    {
+      icon: 'ChartNoAxesCombined',
+      title: "Leaderboard",
+      description: "Get noticed and earn credibility by rising through the ranks as you ask thoughtful questions, share answers.",
+      link: "/leaderboard"
+    }
+  ];
+
+
+
+  
   return (
     <section id="features" className="py-20 md:py-32 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">

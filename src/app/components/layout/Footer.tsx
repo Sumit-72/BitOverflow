@@ -56,14 +56,14 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
-                    aria-label="Sumit's LinkedIn"
+                    aria-label="Pranav's LinkedIn"
                   >
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mailto:johndoe@example.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=pranavprajyot31@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
-                    aria-label="Email Sumit"
+                    aria-label="Email Pranav"
                   >
                     <FaEnvelope className='size-5'/>
                   </Link>
@@ -166,14 +166,14 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline dark:text-blue-400 mr-2"
-                    aria-label="Sumit's LinkedIn"
+                    aria-label="Pranav's LinkedIn"
                   >
                     <FaLinkedinIn className='size-5'/>
                   </Link>
                   <Link
-                    href="mailto:johndoe@example.com"
+                    href="mailto:pranavprajyot31@gmail.com"
                     className="text-blue-600 hover:underline dark:text-blue-400 "
-                    aria-label="Email Sumit"
+                    aria-label="Email Pranav"
                   >
                     <FaEnvelope className='size-5'/>
                   </Link>
