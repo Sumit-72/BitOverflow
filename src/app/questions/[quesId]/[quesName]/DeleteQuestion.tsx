@@ -19,20 +19,20 @@ const DeleteQuestion = ({ questionId, authorId }: { questionId: string; authorId
                 Query.equal("questionId", questionId),
             ]);
             await Promise.all(
-                answers.documents.map(ans =>
+                (answers.documents ?? []).map(ans =>
                     databases.deleteDocument(db, "answers", ans.$id)
                 )
             );
 
-            // Delete all comments related to the question
-            const comments = await databases.listDocuments(db, "comments", [
-                Query.equal("questionId", questionId),
-            ]);
-            await Promise.all(
-                comments.documents.map(comment =>
-                    databases.deleteDocument(db, "comments", comment.$id)
-                )
-            );
+            // // Delete all comments related to the question
+            // const comments = await databases.listDocuments(db, "comments", [
+            //     Query.equal("questionId", questionId),
+            // ]);
+            // await Promise.all(
+            //     (comments.documents ?? []).map(comment =>
+            //         databases.deleteDocument(db, "comments", comment.$id)
+            //     )
+            // );
 
             // Delete all votes related to the question
             const votes = await databases.listDocuments(db, "votes", [
@@ -40,7 +40,7 @@ const DeleteQuestion = ({ questionId, authorId }: { questionId: string; authorId
                 Query.equal("typeId", questionId),
             ]);
             await Promise.all(
-                votes.documents.map(vote =>
+                (votes.documents ?? []).map(vote =>
                     databases.deleteDocument(db, "votes", vote.$id)
                 )
             );
