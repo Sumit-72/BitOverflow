@@ -44,15 +44,21 @@ const Questions = async () => {
     })
   );
   return (
-    <>
-      <div className="flex space-x-6 m-10">
-        <div className="space-y-6 w-[75vw] relative">
-          {questions.documents.map((question) => (
-            <QuestionCard key={question.$id} ques={question} />
-          ))}
+    <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
+      <div className="container mx-auto px-4">
+        <div className="space-y-6">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Questions</h2>
+            {/* Add a button or navigation if needed, similar to LatestQuestions */}
+          </div>
+          <div className="space-y-4">
+            {questions.documents.map((question) => (
+              <QuestionCard key={question.$id} ques={question} />
+            ))}
+          </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
