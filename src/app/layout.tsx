@@ -29,8 +29,9 @@ export default function RootLayout({
           <PageLoader />
       </Suspense>
         <ClientComponent>{children}</ClientComponent> {/* Use the client component */}
-        <Analytics />
+        
         <SpeedInsights/>
+        <Analytics />
       </body>
     </html>
   );
