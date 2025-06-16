@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://bit-overflow.vercel.app
+
+# Sitemaps
+Sitemap: https://bit-overflow.vercel.app/sitemap.xml

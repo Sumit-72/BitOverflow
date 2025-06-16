@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             Your Campus Community Awaits!
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight animate-fade-in animation-delay-100">
-          Bitoverflow<br className="hidden md:block" />
+          BitOverflow<br className="hidden md:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
           Unite. Share. Discover.
           </span>
