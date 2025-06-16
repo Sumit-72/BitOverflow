@@ -3,6 +3,7 @@ import { Sparkles, Zap, Shield, Code, PieChart, Smartphone, MapPin, HousePlus, C
 import FeatureCardClientWrapper from './FeatureCardClientWrapper'; // client wrapper
 import { useAuthStore } from "@/store/Auth";
 import slugify from "@/utils/slugify"; // if you have a slugify util
+import { link } from 'fs';
 
 
 export default function Features() {
@@ -13,37 +14,43 @@ export default function Features() {
       title: "Personalised Dashboard",
       description: "View your questions, clubs, upcoming events, and activity stats — all tailored to your interests and involvement.",
       link: user ? `/users/${user.$id}/${slugify(user.name)}` : "#",
+      linkText: "View Profile",
       requireAuth: true
     },
     {
       icon: 'Code',
       title: "Questions",
       description: "Post detailed questions with images or code snippets, get real-time peer responses, and build a culture of collaborative learning.",
-      link: "/questions"
+      link: "/questions",
+      linkText: "Explore Questions",
     },
     {
       icon: 'HousePlus',
       title: "Clubs",
       description: "Explore a vibrant ecosystem of student clubs, follow updates, join discussions, and never miss an opportunity to get involved.",
-      link: "/club"
+      link: "/club",
+      linkText: "Explore Clubs",
     },
     {
       icon: 'Zap',
       title: "Events",
       description: "From tech talks to cultural fests, discover, bookmark, and RSVP to events that shape your college experience.",
-      link: "/events"
+      link: "/events",
+      linkText: "View Upcoming Events",
     },
     {
       icon: 'MapPin',
       title: "Remap",
       description: "Interactive map guides you through departments, clubs, venues, and more.",
-      link: "https://re-maps.vercel.app/"
+      link: "https://re-maps.vercel.app/",
+      linkText: "Remaps – Campus Navigator",
     },
     {
       icon: 'ChartNoAxesCombined',
       title: "Leaderboard",
       description: "Get noticed and earn credibility by rising through the ranks as you ask thoughtful questions, share answers.",
-      link: "/leaderboard"
+      link: "/leaderboard",
+      linkText: "See Top Contributors",
     }
   ];
 
