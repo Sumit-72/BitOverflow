@@ -1,9 +1,7 @@
 "use client";
-import { Sparkles, Zap, Shield, Code, PieChart, Smartphone, MapPin, HousePlus, ChartNoAxesCombined } from 'lucide-react';
 import FeatureCardClientWrapper from './FeatureCardClientWrapper'; // client wrapper
 import { useAuthStore } from "@/store/Auth";
 import slugify from "@/utils/slugify"; // if you have a slugify util
-import { link } from 'fs';
 
 
 export default function Features() {

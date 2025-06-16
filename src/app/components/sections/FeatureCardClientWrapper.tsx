@@ -46,6 +46,8 @@ export default function FeatureCardClientWrapper({ features }: { features: any[]
               title={feature.title}
               description={feature.description}
               link={feature.link}
+              linkText={feature.linkText}
+              requireAuth={feature.requireAuth}
             />
           </div>
         );
