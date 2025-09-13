@@ -1,5 +1,10 @@
 import { databases, users } from "@/models/server/config";
-import { answerCollection, db, voteCollection, questionCollection } from "@/models/name";
+import {
+  answerCollection,
+  db,
+  voteCollection,
+  questionCollection,
+} from "@/models/name";
 import { Query } from "node-appwrite";
 import React from "react";
 import Link from "next/link";
@@ -9,94 +14,120 @@ import { UserPrefs } from "@/store/Auth";
 import Pagination from "@/components/Pagination";
 import Search from "./Search";
 
-const Page = async ({
-    searchParams
-}: {
-    searchParams: any;
-}) => {
-    const { tag,search } = await searchParams;
-    let {page}=await searchParams;
-    page ||= "1";
+const Page = async ({ searchParams }: { searchParams: any }) => {
+  const { tag, search } = await searchParams;
+  let { page } = await searchParams;
+  page ||= "1";
 
-    const queries = [
-        Query.orderDesc("$createdAt"),
-        Query.offset((+page - 1) * 25),
-        Query.limit(25),
-    ];
+  const queries = [
+    Query.orderDesc("$createdAt"),
+    Query.offset((+page - 1) * 25),
+    Query.limit(25),
+  ];
 
-    if (tag) queries.push(Query.equal("tags", tag));
-    if (search)
-        queries.push(
-            Query.or([
-                Query.search("title", search),
-                Query.search("content", search),
-            ])
-        );
-
-    let questions;
-    try {
-        questions = await databases.listDocuments(db, questionCollection, queries);
-    } catch (error) {
-        console.error("Error fetching documents:", error);
-        questions = { total: 0, documents: [] };
-    }
-        
-    // const questions = await databases.listDocuments(db, questionCollection, queries);
-
-    questions.documents = await Promise.all(
-        questions.documents.map(async ques => {
-            const [author, answers, votes] = await Promise.all([
-                users.get<UserPrefs>(ques.authorId),
-                databases.listDocuments(db, answerCollection, [
-                    Query.equal("questionId", ques.$id),
-                    Query.limit(1), // for optimization
-                ]),
-                databases.listDocuments(db, voteCollection, [
-                    Query.equal("type", "question"),
-                    Query.equal("typeId", ques.$id),
-                    Query.limit(1), // for optimization
-                ]),
-            ]);
-
-            return {
-                ...ques,
-                totalAnswers: answers.total,
-                totalVotes: votes.total,
-                author: {
-                    $id: author.$id,
-                    reputation: author.prefs.reputation,
-                    name: author.name,
-                },
-            };
-        })
+  if (tag) queries.push(Query.equal("tags", tag));
+  if (search) {
+    queries.push(
+      Query.or([
+        Query.contains("title", search),
+        Query.contains("content", search),
+      ])
     );
+  }
 
-    return (
-        <div className="container mx-auto px-4 pb-20 pt-36">
-            <div className="mb-10 flex items-center justify-between">
-                <h1 className="text-3xl font-bold">All Questions</h1>
-                <Link href="/questions/ask">
-                    <ShimmerButton className="shadow-2xl">
-                        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                            Ask a question
-                        </span>
-                    </ShimmerButton>
-                </Link>
-            </div>
-            <div className="mb-4">
-                <Search />
-            </div>
-            <div className="mb-4">
-                <p>{questions.total} questions</p>
-            </div>
-            <div className="mb-4 max-w-3xl space-y-6">
-                {questions.documents.map(ques => (
-                    <QuestionCard key={ques.$id} ques={ques} />
-                ))}
-            </div>
-            <Pagination total={questions.total} limit={25} />
-        </div>
-    );
+  let questions;
+  try {
+    console.log("Search query:", search);
+    console.log("Queries:", queries);
+    questions = await databases.listDocuments(db, questionCollection, queries);
+    console.log("Search results:", questions.total, "documents found");
+  } catch (error) {
+    console.error("Error fetching documents:", error);
+    console.error("Search term:", search);
+    console.error("Query array:", queries);
+    questions = { total: 0, documents: [] };
+  }
+
+  // const questions = await databases.listDocuments(db, questionCollection, queries);
+
+  questions.documents = await Promise.all(
+    questions.documents.map(async (ques) => {
+      const [author, answers, votes] = await Promise.all([
+        users.get<UserPrefs>(ques.authorId),
+        databases.listDocuments(db, answerCollection, [
+          Query.equal("questionId", ques.$id),
+          Query.limit(1), // for optimization
+        ]),
+        databases.listDocuments(db, voteCollection, [
+          Query.equal("type", "question"),
+          Query.equal("typeId", ques.$id),
+          Query.limit(1), // for optimization
+        ]),
+      ]);
+
+      return {
+        ...ques,
+        totalAnswers: answers.total,
+        totalVotes: votes.total,
+        author: {
+          $id: author.$id,
+          reputation: author.prefs.reputation,
+          name: author.name,
+        },
+      };
+    })
+  );
+
+  return (
+    <div className="container mx-auto px-4 pb-20 pt-36">
+      <div className="mb-10 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">All Questions</h1>
+        <Link href="/questions/ask">
+          <ShimmerButton className="shadow-2xl">
+            <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+              Ask a question
+            </span>
+          </ShimmerButton>
+        </Link>
+      </div>
+      <div className="mb-4">
+        <Search />
+      </div>
+      <div className="mb-4">
+        <p>
+          {search ? (
+            <>
+              {questions.total} {questions.total === 1 ? "result" : "results"}{" "}
+              found for "{search}"
+            </>
+          ) : (
+            `${questions.total} questions`
+          )}
+        </p>
+      </div>
+      <div className="mb-4 max-w-3xl space-y-6">
+        {questions.documents.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-500 text-lg">
+              {search
+                ? `No questions found for "${search}"`
+                : "No questions available"}
+            </p>
+            {search && (
+              <p className="text-gray-400 text-sm mt-2">
+                Try different keywords or check your spelling
+              </p>
+            )}
+          </div>
+        ) : (
+          questions.documents.map((ques) => (
+            <QuestionCard key={ques.$id} ques={ques} />
+          ))
+        )}
+      </div>
+      <Pagination total={questions.total} limit={25} />
+    </div>
+  );
 };
 
 export default Page;

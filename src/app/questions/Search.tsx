@@ -17,20 +17,45 @@ const Search = () => {
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newSearchParams = new URLSearchParams(searchParams);
-        newSearchParams.set("search", search);
+        if (search.trim()) {
+            newSearchParams.set("search", search.trim());
+        } else {
+            newSearchParams.delete("search");
+        }
+        router.push(`${pathname}?${newSearchParams}`);
+    };
+
+    const clearSearch = () => {
+        setSearch("");
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.delete("search");
         router.push(`${pathname}?${newSearchParams}`);
     };
 
     return (
         <form className="flex w-full flex-row gap-4" onSubmit={handleSearch}>
-            <Input
-                type="text"
-                placeholder="Search questions"
-                className="text-black"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-            />
-            <button className="shrink-0 rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600">
+            <div className="relative flex-1">
+                <Input
+                    type="text"
+                    placeholder="Search questions by title or content..."
+                    className="text-black pr-10"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                />
+                {search && (
+                    <button
+                        type="button"
+                        onClick={clearSearch}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    >
+                        ✕
+                    </button>
+                )}
+            </div>
+            <button 
+                type="submit"
+                className="shrink-0 rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600"
+            >
                 Search
             </button>
         </form>
