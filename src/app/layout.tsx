@@ -1,6 +1,5 @@
 // layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import ClientComponent from "./c"; // Import the client component
@@ -9,9 +8,8 @@ import PageLoader from "./components/PageLoader"; // Import the loader component
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata : Metadata= {
+  metadataBase: new URL("https://bit-overflow.vercel.app"),
   title: 'BitOverflow',
   description:
     'BitOverflow is the ultimate student platform for BIT Mesra – join discussions, explore clubs, events, and navigate campus all in one place.',
@@ -60,9 +58,10 @@ export default function RootLayout({
     <html lang="en" className="dark">
     <head>
       <meta name="google-site-verification" content="lkm3vAuVAaNjtOxkw09hQEncIv4eMoE5rpWDkqcrK6I" />
+      
     </head>
       
-      <body className={cn(inter.className, "dark:bg-black dark:text-white")}>
+      <body className={cn("dark:bg-black dark:text-white")}>
         <Suspense fallback={<div>Loading...</div>}>
           <PageLoader />
       </Suspense>
